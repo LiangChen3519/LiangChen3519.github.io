@@ -4,9 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="HEXO 新建博客感想, Liang Chen&#39;s Blog">
-    <meta name="description" content="1.什么是HEXOHEXO 是一个利用Markdown渲染的，快速布局博客的框架,在几秒内，即可利用靓丽的主题生成静态网页[1]。具体更多的细节请查看官网的doc。
-2.配套其他软件我们首先需要安装Node.js,再在Node.js中利用n">
+    <meta name="keywords" content="Forest Ecosystem Modeling, Liang Chen&#39;s Blog">
+    <meta name="description" content="This Blog aims to simply step-by step replicate (not so strict) the basic results of the paper titled as Developing an e">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>HEXO 新建博客感想 | Liang Chen&#39;s Blog</title>
+    <title>Forest Ecosystem Modeling | Liang Chen&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -283,12 +282,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">HEXO 新建博客感想</h1>
+                    <h1 class="description center-align post-title">Forest Ecosystem Modeling</h1>
                 </div>
             </div>
         </div>
@@ -405,16 +404,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/HEXO/">
-                                <span class="chip bg-color">HEXO</span>
+                            <a href="/tags/modeling/">
+                                <span class="chip bg-color">modeling</span>
                             </a>
                         
-                            <a href="/tags/Matery/">
-                                <span class="chip bg-color">Matery</span>
+                            <a href="/tags/Forest/">
+                                <span class="chip bg-color">Forest</span>
                             </a>
                         
-                            <a href="/tags/%E5%8D%9A%E5%AE%A2/">
-                                <span class="chip bg-color">博客</span>
+                            <a href="/tags/Carbon-flux/">
+                                <span class="chip bg-color">Carbon flux</span>
                             </a>
                         
                     </div>
@@ -425,8 +424,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Markdown/" class="post-category">
-                                Markdown
+                            <a href="/categories/Python/" class="post-category">
+                                Python
                             </a>
                         
                     </div>
@@ -438,7 +437,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-02-25
+                    2020-02-26
                 </div>
                 
 
@@ -447,14 +446,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    498
+                    724
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    4 分
                 </div>
                 
 
@@ -470,19 +469,135 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h3 id="1-什么是HEXO"><a href="#1-什么是HEXO" class="headerlink" title="1.什么是HEXO"></a>1.什么是HEXO</h3><p><strong>HEXO</strong> 是一个利用Markdown渲染的，快速布局博客的框架,在几秒内，即可利用靓丽的主题生成静态网页<sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="https://www.zhihu.com/question/51588481
-">[1]</span></a></sup>。具体更多的细节请查看<a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">官网的doc</a>。</p>
-<h3 id="2-配套其他软件"><a href="#2-配套其他软件" class="headerlink" title="2.配套其他软件"></a>2.配套其他软件</h3><p>我们首先需要安装<a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">Node.js</a>,再在<strong>Node.js</strong>中利用npm利用<code>$ npm install -g hexo-cli</code>安装blog模块，此时在根目录下会有(比较重要的两个)：</p>
-<ul>
-<li>一个’_config.yml’的属性文件，该文件是定义静态网页的各种属性配置，比如网页的title、subtitle、托管的仓库等等。</li>
-<li>一个theme文件夹，该文件顾名思义主要是存放网页主题的配置文件，比如种链接、背景颜色、各种icon的设置等等。</li>
-</ul>
-<p>然后，我们需要在<a href="https://github.com/" target="_blank" rel="noopener">Github</a>上面注册，然后创建仓库用来托管我们的blog，如何设置仓库及其Key可以参考知乎<sup id="fnref:2"><a href="#fn:2" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="https://zhuanlan.zhihu.com/p/26625249
-">[2]</span></a></sup></p>
-<p>最后我们需要一个网页的模板，并且基于该模板进行魔改，最终得到属于自己的blog。模板的选择，可以参考HEXO的官网<sup id="fnref:3"><a href="#fn:3" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="https://hexo.io/themes/
-">[3]</span></a></sup>。一些logo的选择可以到<a href="https://fontawesome.com/" target="_blank" rel="noopener">fontawesome</a>上面下载，然后本地利用一些软件处理得到自己的logo.</p>
-<h3 id="3-为什么搭建自己博客"><a href="#3-为什么搭建自己博客" class="headerlink" title="3.为什么搭建自己博客"></a>3.为什么搭建自己博客</h3><p>当下有很多可以写文章的网站，比如豆瓣、知乎、简书等, 但是假如有利益冲突，被人家举报，就算你花了很多时间来写东西，你写的东西依然可能被屏蔽。所以基于此最安心的方法是搭建一个自己的博客，自由自在。并且HEXO是用Markdown渲染的，意味着，写作如丝般顺滑。</p>
-<div id="footnotes"><hr><div id="footnotelist"><ol style="list-style: none; padding-left: 0; margin-left: 40px"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">1.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">https://www.zhihu.com/question/51588481<a href="#fnref:1" rev="footnote"> ↩</a></span></li><li id="fn:2"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">2.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">https://zhuanlan.zhihu.com/p/26625249<a href="#fnref:2" rev="footnote"> ↩</a></span></li><li id="fn:3"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">3.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">https://hexo.io/themes/<a href="#fnref:3" rev="footnote"> ↩</a></span></li></ol></div></div><script>
+                <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>This Blog aims to simply step-by step replicate (not so strict) the basic results of the paper titled as <em>Developing an empirical model of stand GPP with the LUE model approach: analysis of eddy covriance data at five constrasting conifer sites in Europe</em> <sup id="fnref:1"><a href="#fn:1" rel="footnote">&lt;span class=”hint–top hint–error hint–medium hint–rounded hint–bounce” aria-label=”Mäkelä, Annikki, et al. “Developing an empirical model of stand GPP with the LUE approach: analysis of eddy covariance data at five contrasting conifer sites in Europe.” Global change biology 14.1 (2008): 92-108.<br>“&gt;[1]</a></sup>. Mäkelä’s paper developed a statistical model for daily gross primary production (GPP) in boreal and temperate coniferous forests based on <strong>Light Use Efficiency (LUE)</strong>. So we plan to apply weather dataset to simulate daily Gross Primary Production (GPP) by using Python.</p>
+<p>To make the model easily to understand, we just using the fixed parameters supported by authors in the paper. And the fixed parameters list as follow:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Meaning</th>
+<th align="left">Unit</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">$\beta$</td>
+<td align="left">Potential daily LUE</td>
+<td align="left"><div style="width: 100pt"> $g \cdot C \cdot m^{-2}$ </div></td>
+<td align="left">0.513</td>
+</tr>
+<tr>
+<td align="left">$\gamma$</td>
+<td align="left">Empirical parameter</td>
+<td align="left">$m^{2}\cdot mol^{-1}$</td>
+<td align="left">0.0196</td>
+</tr>
+<tr>
+<td align="left">$\kappa$</td>
+<td align="left">Empirical parameter</td>
+<td align="left">$kPa^{-1}$</td>
+<td align="left">-0.389</td>
+</tr>
+<tr>
+<td align="left">$\tau $</td>
+<td align="left">Time constant of delay process</td>
+<td align="left">$days$</td>
+<td align="left">7.2</td>
+</tr>
+<tr>
+<td align="left">$X_{0}$</td>
+<td align="left">Shreshold value of the delayed temperature</td>
+<td align="left">$ ^{\circ}C$</td>
+<td align="left">-4</td>
+</tr>
+<tr>
+<td align="left">$S_{max}$</td>
+<td align="left">Empirical parameter</td>
+<td align="left">$ ^{\circ}C$</td>
+<td align="left">17.3</td>
+</tr>
+</tbody></table>
+<p> And the main model is:<br> $$P_{k} = \beta \Phi_{k}\prod_i f_{ik}+\varepsilon_{k} \tag1$$</p>
+<p> Where:<br><br> $P_{k}$ is GPP (gC\cdot m^{2}\cdot day^{-1}).<br><br> $\prod_{i} f_{ik}$ for me, means product of the 4 different modifying factors. <br><br> $\varepsilon_{k}$ here, i assumed that, follows the normal distribution. <br><br> $\Theta$ is APAR with unit $mol \cdot m^{-2}$.<br><br>The model is based on <strong>Daily data</strong>, so before we input all variables into model, make sure the time span! Besides, due to input variables include <strong>VPD</strong> and <strong>PAR</strong>, however the weather dataset struct (shows as below:)</p>
+<p><img src="/images/WEATHER_DATA.png" alt=""></p>
+<p> has no such variables, so we have to convert <strong>air pressur</strong> and <strong>air temperature</strong> to <strong>VPD</strong> and <strong>PAR</strong>, respectively.<br>Here we star:</p>
+<h4 id="1-Define-the-constant"><a href="#1-Define-the-constant" class="headerlink" title="1 Define the constant"></a>1 Define the constant</h4><pre class=" language-python"><code class="language-python">Beta <span class="token operator">=</span> <span class="token number">0.513</span>  <span class="token comment" spellcheck="true"># Potential daily LUE</span>
+Gamma <span class="token operator">=</span> <span class="token number">0.0196</span>  <span class="token comment" spellcheck="true"># Empirical parameter</span>
+Kappa <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">0.389</span>  <span class="token comment" spellcheck="true"># Empirical parameter</span>
+Tau <span class="token operator">=</span> <span class="token number">7.2</span>  <span class="token comment" spellcheck="true"># Time constant of delay process</span>
+Xo <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">4</span>  <span class="token comment" spellcheck="true"># Shreshold value of the delayed temperature</span>
+Smax <span class="token operator">=</span> <span class="token number">17.3</span>  <span class="token comment" spellcheck="true"># Empirical parameter</span>
+k <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">0.389</span>  <span class="token comment" spellcheck="true"># Empirical parameter</span></code></pre>
+<h4 id="2-Calculation-for-modifying-factors"><a href="#2-Calculation-for-modifying-factors" class="headerlink" title="2 Calculation for modifying factors"></a>2 Calculation for modifying factors</h4><h5 id="2-1-Light-modifier-f-L"><a href="#2-1-Light-modifier-f-L" class="headerlink" title="2.1 Light modifier $f_{L}$"></a>2.1 Light modifier $f_{L}$</h5><pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">Light_modifer</span><span class="token punctuation">(</span>Phi<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""
+    daily light modifer
+        Input:
+            Phi is daily APAR with unit of mol m^-2
+        Output:
+            Light modifying factors, range from [0,1]
+    """</span>
+    <span class="token keyword">global</span> Gamma
+
+    Fl <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">/</span> <span class="token punctuation">(</span>Gamma <span class="token operator">*</span> Phi <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> Fl</code></pre>
+<h5 id="2-2-Temperature-modifier-f-S"><a href="#2-2-Temperature-modifier-f-S" class="headerlink" title="2.2 Temperature modifier $f_{S}$"></a>2.2 Temperature modifier $f_{S}$</h5><pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">Temperature_modifier</span><span class="token punctuation">(</span>Tair<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">global</span> Tau
+    <span class="token keyword">global</span> Xo
+    <span class="token keyword">global</span> Smax
+
+    X <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    X<span class="token punctuation">.</span>append<span class="token punctuation">(</span>Tair<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> len<span class="token punctuation">(</span>Tair<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+        Xk <span class="token operator">=</span> X<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">/</span> Tau<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span>Tair<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span> X<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+        X<span class="token punctuation">.</span>append<span class="token punctuation">(</span>Xk<span class="token punctuation">)</span>
+
+    Sk <span class="token operator">=</span> <span class="token punctuation">[</span>x <span class="token operator">-</span> Xo <span class="token keyword">if</span> x <span class="token operator">-</span> Xo <span class="token operator">></span> <span class="token number">0</span> <span class="token keyword">else</span> <span class="token number">0</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> X<span class="token punctuation">]</span>
+
+    fs <span class="token operator">=</span> <span class="token punctuation">[</span>s <span class="token operator">/</span> Smax <span class="token keyword">if</span> s <span class="token operator">/</span> Smax <span class="token operator">&lt;</span> <span class="token number">1</span> <span class="token keyword">else</span> <span class="token number">1</span> <span class="token keyword">for</span> s <span class="token keyword">in</span> Sk<span class="token punctuation">]</span>
+
+    <span class="token keyword">return</span> fs
+</code></pre>
+<h5 id="2-3-VPD-modifier-f-D"><a href="#2-3-VPD-modifier-f-D" class="headerlink" title="2.3 VPD modifier $f_{D}$"></a>2.3 VPD modifier $f_{D}$</h5><pre class=" language-python"><code class="language-python">
+<span class="token keyword">def</span> <span class="token function">VPD_modifier</span><span class="token punctuation">(</span>VPD<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""
+    Note: unit for VPD is kPa
+    """</span>
+    <span class="token keyword">global</span> k
+
+    fd <span class="token operator">=</span> np<span class="token punctuation">.</span>exp<span class="token punctuation">(</span>k <span class="token operator">*</span> VPD<span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> fd</code></pre>
+<h5 id="2-4-Soil-water-modifier"><a href="#2-4-Soil-water-modifier" class="headerlink" title="2.4 Soil water modifier"></a>2.4 Soil water modifier</h5><pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">SWC_modifier</span><span class="token punctuation">(</span>Theta_wp<span class="token punctuation">,</span> Theta_FC<span class="token punctuation">,</span> SWC<span class="token punctuation">,</span> alpha<span class="token punctuation">,</span> nu<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    REW <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">(</span>x <span class="token operator">-</span> Theta_wp<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token punctuation">(</span>Theta_FC <span class="token operator">+</span> Theta_wp<span class="token punctuation">)</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> SWC<span class="token punctuation">]</span>
+    Wk <span class="token operator">=</span> <span class="token punctuation">[</span>x <span class="token keyword">if</span> x <span class="token operator">&lt;</span> <span class="token number">1</span> <span class="token keyword">else</span> <span class="token number">1</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> REW<span class="token punctuation">]</span>
+
+    fw1 <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">/</span> <span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">+</span> pow<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">-</span> WK<span class="token punctuation">)</span> <span class="token operator">/</span> alpha<span class="token punctuation">,</span> nu<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    fw2 <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">-</span> np<span class="token punctuation">.</span>exp<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span> <span class="token operator">*</span> alpha <span class="token operator">*</span> pow<span class="token punctuation">(</span>Wk<span class="token punctuation">,</span> nu<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> fw1<span class="token punctuation">,</span> fw2
+</code></pre>
+<h5 id="2-5-Daily-random-error-varepsilon-k"><a href="#2-5-Daily-random-error-varepsilon-k" class="headerlink" title="2.5 Daily random error $\varepsilon_{k}$"></a>2.5 Daily random error $\varepsilon_{k}$</h5><pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">Random_error</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    error <span class="token operator">=</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>normal<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> error
+</code></pre>
+<h4 id="3-Final-model"><a href="#3-Final-model" class="headerlink" title="3 Final model"></a>3 Final model</h4><pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">GPP_estimation</span><span class="token punctuation">(</span>Phi<span class="token punctuation">,</span> VPD<span class="token punctuation">,</span> Tair<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    <span class="token keyword">global</span> Beta
+
+    e <span class="token operator">=</span> Random_error<span class="token punctuation">(</span>n<span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> Beta <span class="token operator">*</span> Phi <span class="token operator">*</span> Light_modifer<span class="token punctuation">(</span>Phi<span class="token punctuation">)</span> <span class="token operator">*</span> Temperature_modifier<span class="token punctuation">(</span>Tair<span class="token punctuation">)</span> <span class="token operator">*</span> VPD_modifier<span class="token punctuation">(</span>VPD<span class="token punctuation">)</span> <span class="token operator">+</span> e</code></pre>
+<p>Final result just as below:</p>
+<p><img src="/images/GPP.gif" alt=""></p>
+<div id="footnotes"><hr><div id="footnotelist"><ol style="list-style: none; padding-left: 0; margin-left: 40px"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">1.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">Mäkelä, Annikki, et al. "Developing an empirical model of stand GPP with the LUE approach: analysis of eddy covariance data at five contrasting conifer sites in Europe." Global change biology 14.1 (2008): 92-108.<a href="#fnref:1" rev="footnote"> ↩</a></span></li></ol></div></div><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -525,7 +640,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://liangchen3519.github.io/2020/02/25/HEXO-%E6%96%B0%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%84%9F%E6%83%B3/">https://liangchen3519.github.io/2020/02/25/HEXO-%E6%96%B0%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%84%9F%E6%83%B3/</a>
+                    <a href="https://liangchen3519.github.io/2020/02/26/Forest-Ecosystem-Modeling/">https://liangchen3519.github.io/2020/02/26/Forest-Ecosystem-Modeling/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -563,16 +678,16 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/HEXO/">
-                                    <span class="chip bg-color">HEXO</span>
+                                <a href="/tags/modeling/">
+                                    <span class="chip bg-color">modeling</span>
                                 </a>
                             
-                                <a href="/tags/Matery/">
-                                    <span class="chip bg-color">Matery</span>
+                                <a href="/tags/Forest/">
+                                    <span class="chip bg-color">Forest</span>
                                 </a>
                             
-                                <a href="/tags/%E5%8D%9A%E5%AE%A2/">
-                                    <span class="chip bg-color">博客</span>
+                                <a href="/tags/Carbon-flux/">
+                                    <span class="chip bg-color">Carbon flux</span>
                                 </a>
                             
                         </div>
@@ -743,7 +858,7 @@
         repo: 'LiangChen3519.github.io',
         owner: 'LiangChen3519',
         admin: ["LiangChen3519"],
-        id: '2020-02-25T00-15-26',
+        id: '2020-02-26T22-19-43',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -764,9 +879,68 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2020/02/26/Forest-Ecosystem-Modeling/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Forest Ecosystem Modeling">
+                        
+                        <span class="card-title">Forest Ecosystem Modeling</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            This Blog aims to simply step-by step replicate (not so strict) the basic results of the paper titled as Developing an e
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-26
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Python/" class="post-category">
+                                    Python
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/modeling/">
+                        <span class="chip bg-color">modeling</span>
+                    </a>
+                    
+                    <a href="/tags/Forest/">
+                        <span class="chip bg-color">Forest</span>
+                    </a>
+                    
+                    <a href="/tags/Carbon-flux/">
+                        <span class="chip bg-color">Carbon flux</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2020/02/25/Spatial-data-from-2D-to-3D/">
                     <div class="card-image">
@@ -784,9 +958,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-25
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-25
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -812,65 +986,6 @@
                     
                     <a href="/tags/gif/">
                         <span class="chip bg-color">gif</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/02/25/HEXO-%E6%96%B0%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%84%9F%E6%83%B3/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="HEXO 新建博客感想">
-                        
-                        <span class="card-title">HEXO 新建博客感想</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            1.什么是HEXOHEXO 是一个利用Markdown渲染的，快速布局博客的框架,在几秒内，即可利用靓丽的主题生成静态网页[1]。具体更多的细节请查看官网的doc。
-2.配套其他软件我们首先需要安装Node.js,再在Node.js中利用n
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-25
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Markdown/" class="post-category">
-                                    Markdown
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/HEXO/">
-                        <span class="chip bg-color">HEXO</span>
-                    </a>
-                    
-                    <a href="/tags/Matery/">
-                        <span class="chip bg-color">Matery</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%8D%9A%E5%AE%A2/">
-                        <span class="chip bg-color">博客</span>
                     </a>
                     
                 </div>
@@ -1008,6 +1123,13 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
 </main>
 
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
 
 
     <footer class="page-footer bg-color">
