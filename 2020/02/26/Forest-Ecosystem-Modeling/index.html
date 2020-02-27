@@ -3,7 +3,7 @@
 
 
 <head>
-    <meta charset="utf-8">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="Forest Ecosystem Modeling, Liang Chen&#39;s Blog">
     <meta name="description" content="This Blog aims to simply step-by step replicate (not so strict) the basic results of the paper titled as Developing an e">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,11 +27,11 @@
     <script src="/libs/jquery/jquery.min.js"></script>
     
 <meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Liang Chen's Blog" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 
 <body>
-    <header class="navbar-fixed">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
         <div id="navContainer" class="nav-wrapper container">
             <div class="brand-logo">
@@ -446,7 +446,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    724
+                    674
                 </div>
                 
 
@@ -469,7 +469,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>This Blog aims to simply step-by step replicate (not so strict) the basic results of the paper titled as <em>Developing an empirical model of stand GPP with the LUE model approach: analysis of eddy covriance data at five constrasting conifer sites in Europe</em> <sup id="fnref:1"><a href="#fn:1" rel="footnote">&lt;span class=”hint–top hint–error hint–medium hint–rounded hint–bounce” aria-label=”Mäkelä, Annikki, et al. “Developing an empirical model of stand GPP with the LUE approach: analysis of eddy covariance data at five contrasting conifer sites in Europe.” Global change biology 14.1 (2008): 92-108.<br>“&gt;[1]</a></sup>. Mäkelä’s paper developed a statistical model for daily gross primary production (GPP) in boreal and temperate coniferous forests based on <strong>Light Use Efficiency (LUE)</strong>. So we plan to apply weather dataset to simulate daily Gross Primary Production (GPP) by using Python.</p>
+                <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>This Blog aims to simply step-by step replicate (not so strict) the basic results of the paper titled as <em>Developing an empirical model of stand GPP with the LUE model approach: analysis of eddy covriance data at five constrasting conifer sites in Europe</em> $^{[1]}$. Mäkelä’s paper developed a statistical model for daily gross primary production (GPP) in boreal and temperate coniferous forests based on <strong>Light Use Efficiency (LUE)</strong>. So we plan to apply weather dataset to simulate daily Gross Primary Production (GPP) by using Python.</p>
 <p>To make the model easily to understand, we just using the fixed parameters supported by authors in the paper. And the fixed parameters list as follow:</p>
 <table>
 <thead>
@@ -518,17 +518,23 @@
 </tr>
 </tbody></table>
 <p> And the main model is:<br> $$P_{k} = \beta \Phi_{k}\prod_i f_{ik}+\varepsilon_{k} \tag1$$</p>
-<p> Where:<br><br> $P_{k}$ is GPP (gC\cdot m^{2}\cdot day^{-1}).<br><br> $\prod_{i} f_{ik}$ for me, means product of the 4 different modifying factors. <br><br> $\varepsilon_{k}$ here, i assumed that, follows the normal distribution. <br><br> $\Theta$ is APAR with unit $mol \cdot m^{-2}$.<br><br>The model is based on <strong>Daily data</strong>, so before we input all variables into model, make sure the time span! Besides, due to input variables include <strong>VPD</strong> and <strong>PAR</strong>, however the weather dataset struct (shows as below:)</p>
+<p> Where:</p>
+<p> $P_{k}$ is GPP ($gC\cdot m^{2}\cdot day^{-1}$).</p>
+<p> $\prod_{i} f_{ik}$ for me, means product of the 4 different modifying factors.<br> $\varepsilon_{k}$ here, i assumed that, follows the normal distribution.<br> $\Theta$ is APAR with unit $mol \cdot m^{-2}$.</p>
+<p>The model is based on <strong>Daily data</strong>, so before we input all variables into model, make sure the time span! Besides, due to input variables include <strong>VPD</strong> and <strong>PAR</strong>, however the weather dataset struct (shows as below:)</p>
 <p><img src="/images/WEATHER_DATA.png" alt=""></p>
 <p> has no such variables, so we have to convert <strong>air pressur</strong> and <strong>air temperature</strong> to <strong>VPD</strong> and <strong>PAR</strong>, respectively.<br>Here we star:</p>
-<h4 id="1-Define-the-constant"><a href="#1-Define-the-constant" class="headerlink" title="1 Define the constant"></a>1 Define the constant</h4><pre class=" language-python"><code class="language-python">Beta <span class="token operator">=</span> <span class="token number">0.513</span>  <span class="token comment" spellcheck="true"># Potential daily LUE</span>
+<h4 id="1-Define-the-constant"><a href="#1-Define-the-constant" class="headerlink" title="1 Define the constant"></a>1 Define the constant</h4><pre class=" language-python"><code class="language-python">
+Beta <span class="token operator">=</span> <span class="token number">0.513</span>  <span class="token comment" spellcheck="true"># Potential daily LUE</span>
 Gamma <span class="token operator">=</span> <span class="token number">0.0196</span>  <span class="token comment" spellcheck="true"># Empirical parameter</span>
 Kappa <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">0.389</span>  <span class="token comment" spellcheck="true"># Empirical parameter</span>
 Tau <span class="token operator">=</span> <span class="token number">7.2</span>  <span class="token comment" spellcheck="true"># Time constant of delay process</span>
 Xo <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">4</span>  <span class="token comment" spellcheck="true"># Shreshold value of the delayed temperature</span>
 Smax <span class="token operator">=</span> <span class="token number">17.3</span>  <span class="token comment" spellcheck="true"># Empirical parameter</span>
-k <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">0.389</span>  <span class="token comment" spellcheck="true"># Empirical parameter</span></code></pre>
-<h4 id="2-Calculation-for-modifying-factors"><a href="#2-Calculation-for-modifying-factors" class="headerlink" title="2 Calculation for modifying factors"></a>2 Calculation for modifying factors</h4><h5 id="2-1-Light-modifier-f-L"><a href="#2-1-Light-modifier-f-L" class="headerlink" title="2.1 Light modifier $f_{L}$"></a>2.1 Light modifier $f_{L}$</h5><pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">Light_modifer</span><span class="token punctuation">(</span>Phi<span class="token punctuation">)</span><span class="token punctuation">:</span>
+k <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">0.389</span>  <span class="token comment" spellcheck="true"># Empirical parameter</span>
+</code></pre>
+<h4 id="2-Calculation-for-modifying-factors"><a href="#2-Calculation-for-modifying-factors" class="headerlink" title="2 Calculation for modifying factors"></a>2 Calculation for modifying factors</h4><h5 id="2-1-Light-modifier-f-L"><a href="#2-1-Light-modifier-f-L" class="headerlink" title="2.1 Light modifier $f_{L}$"></a>2.1 Light modifier $f_{L}$</h5><pre class=" language-python"><code class="language-python">
+<span class="token keyword">def</span> <span class="token function">Light_modifer</span><span class="token punctuation">(</span>Phi<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token triple-quoted-string string">"""
     daily light modifer
         Input:
@@ -540,8 +546,10 @@ k <span class="token operator">=</span> <span class="token operator">-</span><sp
 
     Fl <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">/</span> <span class="token punctuation">(</span>Gamma <span class="token operator">*</span> Phi <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
 
-    <span class="token keyword">return</span> Fl</code></pre>
-<h5 id="2-2-Temperature-modifier-f-S"><a href="#2-2-Temperature-modifier-f-S" class="headerlink" title="2.2 Temperature modifier $f_{S}$"></a>2.2 Temperature modifier $f_{S}$</h5><pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">Temperature_modifier</span><span class="token punctuation">(</span>Tair<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> Fl
+</code></pre>
+<h5 id="2-2-Temperature-modifier-f-S"><a href="#2-2-Temperature-modifier-f-S" class="headerlink" title="2.2 Temperature modifier $f_{S}$"></a>2.2 Temperature modifier $f_{S}$</h5><pre class=" language-python"><code class="language-python">
+<span class="token keyword">def</span> <span class="token function">Temperature_modifier</span><span class="token punctuation">(</span>Tair<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">global</span> Tau
     <span class="token keyword">global</span> Xo
     <span class="token keyword">global</span> Smax
@@ -570,8 +578,10 @@ k <span class="token operator">=</span> <span class="token operator">-</span><sp
 
     fd <span class="token operator">=</span> np<span class="token punctuation">.</span>exp<span class="token punctuation">(</span>k <span class="token operator">*</span> VPD<span class="token punctuation">)</span>
 
-    <span class="token keyword">return</span> fd</code></pre>
-<h5 id="2-4-Soil-water-modifier"><a href="#2-4-Soil-water-modifier" class="headerlink" title="2.4 Soil water modifier"></a>2.4 Soil water modifier</h5><pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">SWC_modifier</span><span class="token punctuation">(</span>Theta_wp<span class="token punctuation">,</span> Theta_FC<span class="token punctuation">,</span> SWC<span class="token punctuation">,</span> alpha<span class="token punctuation">,</span> nu<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> fd
+</code></pre>
+<h5 id="2-4-Soil-water-modifier"><a href="#2-4-Soil-water-modifier" class="headerlink" title="2.4 Soil water modifier"></a>2.4 Soil water modifier</h5><pre class=" language-python"><code class="language-python">
+<span class="token keyword">def</span> <span class="token function">SWC_modifier</span><span class="token punctuation">(</span>Theta_wp<span class="token punctuation">,</span> Theta_FC<span class="token punctuation">,</span> SWC<span class="token punctuation">,</span> alpha<span class="token punctuation">,</span> nu<span class="token punctuation">)</span><span class="token punctuation">:</span>
 
     REW <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">(</span>x <span class="token operator">-</span> Theta_wp<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token punctuation">(</span>Theta_FC <span class="token operator">+</span> Theta_wp<span class="token punctuation">)</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> SWC<span class="token punctuation">]</span>
     Wk <span class="token operator">=</span> <span class="token punctuation">[</span>x <span class="token keyword">if</span> x <span class="token operator">&lt;</span> <span class="token number">1</span> <span class="token keyword">else</span> <span class="token number">1</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> REW<span class="token punctuation">]</span>
@@ -582,22 +592,26 @@ k <span class="token operator">=</span> <span class="token operator">-</span><sp
 
     <span class="token keyword">return</span> fw1<span class="token punctuation">,</span> fw2
 </code></pre>
-<h5 id="2-5-Daily-random-error-varepsilon-k"><a href="#2-5-Daily-random-error-varepsilon-k" class="headerlink" title="2.5 Daily random error $\varepsilon_{k}$"></a>2.5 Daily random error $\varepsilon_{k}$</h5><pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">Random_error</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<h5 id="2-5-Daily-random-error-varepsilon-k"><a href="#2-5-Daily-random-error-varepsilon-k" class="headerlink" title="2.5 Daily random error $\varepsilon_{k}$"></a>2.5 Daily random error $\varepsilon_{k}$</h5><pre class=" language-python"><code class="language-python">
+<span class="token keyword">def</span> <span class="token function">Random_error</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
 
     error <span class="token operator">=</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>normal<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span>
 
     <span class="token keyword">return</span> error
 </code></pre>
-<h4 id="3-Final-model"><a href="#3-Final-model" class="headerlink" title="3 Final model"></a>3 Final model</h4><pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">GPP_estimation</span><span class="token punctuation">(</span>Phi<span class="token punctuation">,</span> VPD<span class="token punctuation">,</span> Tair<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<h4 id="3-Final-model"><a href="#3-Final-model" class="headerlink" title="3 Final model"></a>3 Final model</h4><pre class=" language-python"><code class="language-python">
+<span class="token keyword">def</span> <span class="token function">GPP_estimation</span><span class="token punctuation">(</span>Phi<span class="token punctuation">,</span> VPD<span class="token punctuation">,</span> Tair<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">:</span>
 
     <span class="token keyword">global</span> Beta
 
     e <span class="token operator">=</span> Random_error<span class="token punctuation">(</span>n<span class="token punctuation">)</span>
 
-    <span class="token keyword">return</span> Beta <span class="token operator">*</span> Phi <span class="token operator">*</span> Light_modifer<span class="token punctuation">(</span>Phi<span class="token punctuation">)</span> <span class="token operator">*</span> Temperature_modifier<span class="token punctuation">(</span>Tair<span class="token punctuation">)</span> <span class="token operator">*</span> VPD_modifier<span class="token punctuation">(</span>VPD<span class="token punctuation">)</span> <span class="token operator">+</span> e</code></pre>
+    <span class="token keyword">return</span> Beta <span class="token operator">*</span> Phi <span class="token operator">*</span> Light_modifer<span class="token punctuation">(</span>Phi<span class="token punctuation">)</span> <span class="token operator">*</span> Temperature_modifier<span class="token punctuation">(</span>Tair<span class="token punctuation">)</span> <span class="token operator">*</span> VPD_modifier<span class="token punctuation">(</span>VPD<span class="token punctuation">)</span> <span class="token operator">+</span> e
+</code></pre>
 <p>Final result just as below:</p>
 <p><img src="/images/GPP.gif" alt=""></p>
-<div id="footnotes"><hr><div id="footnotelist"><ol style="list-style: none; padding-left: 0; margin-left: 40px"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">1.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">Mäkelä, Annikki, et al. "Developing an empirical model of stand GPP with the LUE approach: analysis of eddy covariance data at five contrasting conifer sites in Europe." Global change biology 14.1 (2008): 92-108.<a href="#fnref:1" rev="footnote"> ↩</a></span></li></ol></div></div><script>
+<p><strong>Reference:</strong><br>[1]: Mäkelä, Annikki, et al. “Developing an empirical model of stand GPP with the LUE approach: analysis of eddy covariance data at five contrasting conifer sites in Europe.” Global change biology 14.1 (2008): 92-108.</p>
+<script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -1050,8 +1064,8 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('0'),
-            headingSelector: 'h2, h3, h4'
+            collapseDepth: Number('7'),
+            headingSelector: 'h2, h3, h4, h5, h6'
         });
 
         // modify the toc link href to support Chinese.
@@ -1063,7 +1077,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
         // modify the heading title id to support Chinese.
         i = 0;
-        $('#articleContent').children('h2, h3, h4').each(function () {
+        $('#articleContent').children('h2, h3, h4, h5, h6').each(function () {
             $(this).attr('id', tocHeading + (++i));
         });
 
@@ -1124,7 +1138,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 </main>
 
 
-<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="https://cdn.bootcshs.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <script>
     MathJax.Hub.Config({
         tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
@@ -1332,6 +1346,21 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 
 </html>
