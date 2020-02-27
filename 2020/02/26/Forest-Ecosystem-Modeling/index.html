@@ -26,8 +26,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
     
-<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Liang Chen's Blog" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Liang Chen's Blog" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
 
 
 <body>
@@ -446,7 +446,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    674
+                    667
                 </div>
                 
 
@@ -469,150 +469,52 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>This Blog aims to simply step-by-step replicate (not so strict) the basic results of the paper titled as <em>Developing an empirical model of stand GPP with the LUE model approach: analysis of eddy covriance data at five constrasting conifer sites in Europe</em> $^{[1]}$. Mäkelä’s paper developed a statistical model for daily gross primary production (GPP) in boreal and temperate coniferous forests based on <strong>Light Use Efficiency (LUE)</strong>. So we plan to apply weather dataset to simulate daily Gross Primary Production (GPP) by using Python.</p>
+                <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>This Blog aims to simply step-by-step replicate (not so strict) the basic results of the paper titled as <em>Developing an empirical model of stand GPP with the LUE model approach: analysis of eddy covriance data at five constrasting conifer sites in Europe</em> <span class="math inline">\(^{[1]}\)</span>. Mäkelä's paper developed a statistical model for daily gross primary production (GPP) in boreal and temperate coniferous forests based on <strong>Light Use Efficiency (LUE)</strong>. So we plan to apply weather dataset to simulate daily Gross Primary Production (GPP) by using Python.</p>
 <p>To make the model easily to understand, we just using the fixed parameters supported by authors in the paper. And the fixed parameters list as follow:</p>
 <table>
 <thead>
-<tr>
-<th align="left">Parameter</th>
-<th align="left">Meaning</th>
-<th align="left">Unit</th>
-<th align="left">Value</th>
+<tr class="header">
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: left;">Meaning</th>
+<th style="text-align: left;">Unit</th>
+<th style="text-align: left;">Value</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">$\beta$</td>
-<td align="left">Potential daily LUE</td>
-<td align="left"><div style="width: 100pt"> $g \cdot C \cdot m^{-2}$ </div></td>
-<td align="left">0.513</td>
-</tr>
-<tr>
-<td align="left">$\gamma$</td>
-<td align="left">Empirical parameter</td>
-<td align="left">$m^{2}\cdot mol^{-1}$</td>
-<td align="left">0.0196</td>
-</tr>
-<tr>
-<td align="left">$\kappa$</td>
-<td align="left">Empirical parameter</td>
-<td align="left">$kPa^{-1}$</td>
-<td align="left">-0.389</td>
-</tr>
-<tr>
-<td align="left">$\tau $</td>
-<td align="left">Time constant of delay process</td>
-<td align="left">$days$</td>
-<td align="left">7.2</td>
-</tr>
-<tr>
-<td align="left">$X_{0}$</td>
-<td align="left">Shreshold value of the delayed temperature</td>
-<td align="left">$ ^{\circ}C$</td>
-<td align="left">-4</td>
-</tr>
-<tr>
-<td align="left">$S_{max}$</td>
-<td align="left">Empirical parameter</td>
-<td align="left">$ ^{\circ}C$</td>
-<td align="left">17.3</td>
-</tr>
-</tbody></table>
-<p> And the main model is:<br> $$P_{k} = \beta \Phi_{k}\prod_i f_{ik}+\varepsilon_{k} \tag1$$</p>
-<p> Where:</p>
-<p> $P_{k}$ is GPP ($gC\cdot m^{2}\cdot day^{-1}$).</p>
-<p> $\prod_{i} f_{ik}$ for me, means product of the 4 different modifying factors. </p>
-<p> $\varepsilon_{k}$ here, i assumed that, follows the normal distribution.</p>
-<p> $\Theta$ is APAR with unit $mol \cdot m^{-2}$.</p>
+<tbody>
+</tbody>
+</table>
+|<span class="math inline">\(\beta\)</span>|Potential daily LUE|
+<div style="width: 100pt">
+<span class="math inline">\(g \cdot C \cdot m^{-2}\)</span>
+</div>
+<p>|0.513| |<span class="math inline">\(\gamma\)</span>|Empirical parameter|<span class="math inline">\(m^{2}\cdot mol^{-1}\)</span>|0.0196| | <span class="math inline">\(\kappa\)</span> | Empirical parameter |<span class="math inline">\(kPa^{-1}\)</span>| -0.389 | | $$ | Time constant of delay process |<span class="math inline">\(days\)</span>| 7.2 | | <span class="math inline">\(X_{0}\)</span> | Shreshold value of the delayed temperature |$ ^{}C$| -4 | | <span class="math inline">\(S_{max}\)</span> | Empirical parameter |$ ^{}C$| 17.3 |</p>
+<p>And the main model is: <span class="math display">\[P_{k} = \beta \Phi_{k}\prod_i f_{ik}+\varepsilon_{k} \tag1\]</span></p>
+<p>Where:</p>
+<p><span class="math inline">\(P_{k}\)</span> is GPP (<span class="math inline">\(gC\cdot m^{2}\cdot day^{-1}\)</span>).</p>
+<p><span class="math inline">\(\prod_{i} f_{ik}\)</span> for me, means product of the 4 different modifying factors.</p>
+<p><span class="math inline">\(\varepsilon_{k}\)</span> here, i assumed that, follows the normal distribution.</p>
+<p><span class="math inline">\(\Theta\)</span> is APAR with unit <span class="math inline">\(mol \cdot m^{-2}\)</span>.</p>
 <p>The model is based on <strong>Daily data</strong>, so before we input all variables into model, make sure the time span! Besides, due to input variables include <strong>VPD</strong> and <strong>PAR</strong>, however the weather dataset struct (shows as below:)</p>
-<p><img src="/images/WEATHER_DATA.png" alt=""></p>
-<p> has no such variables, so we have to convert <strong>air pressur</strong> and <strong>air temperature</strong> to <strong>VPD</strong> and <strong>PAR</strong>, respectively.<br>Here we star:</p>
-<h4 id="1-Define-the-constant"><a href="#1-Define-the-constant" class="headerlink" title="1 Define the constant"></a>1 Define the constant</h4><pre class=" language-python"><code class="language-python">
-Beta <span class="token operator">=</span> <span class="token number">0.513</span>  <span class="token comment" spellcheck="true"># Potential daily LUE</span>
-Gamma <span class="token operator">=</span> <span class="token number">0.0196</span>  <span class="token comment" spellcheck="true"># Empirical parameter</span>
-Kappa <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">0.389</span>  <span class="token comment" spellcheck="true"># Empirical parameter</span>
-Tau <span class="token operator">=</span> <span class="token number">7.2</span>  <span class="token comment" spellcheck="true"># Time constant of delay process</span>
-Xo <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">4</span>  <span class="token comment" spellcheck="true"># Shreshold value of the delayed temperature</span>
-Smax <span class="token operator">=</span> <span class="token number">17.3</span>  <span class="token comment" spellcheck="true"># Empirical parameter</span>
-k <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">0.389</span>  <span class="token comment" spellcheck="true"># Empirical parameter</span>
-</code></pre>
-<h4 id="2-Calculation-for-modifying-factors"><a href="#2-Calculation-for-modifying-factors" class="headerlink" title="2 Calculation for modifying factors"></a>2 Calculation for modifying factors</h4><h5 id="2-1-Light-modifier-f-L"><a href="#2-1-Light-modifier-f-L" class="headerlink" title="2.1 Light modifier $f_{L}$"></a>2.1 Light modifier $f_{L}$</h5><pre class=" language-python"><code class="language-python">
-<span class="token keyword">def</span> <span class="token function">Light_modifer</span><span class="token punctuation">(</span>Phi<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token triple-quoted-string string">"""
-    daily light modifer
-        Input:
-            Phi is daily APAR with unit of mol m^-2
-        Output:
-            Light modifying factors, range from [0,1]
-    """</span>
-    <span class="token keyword">global</span> Gamma
-
-    Fl <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">/</span> <span class="token punctuation">(</span>Gamma <span class="token operator">*</span> Phi <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
-
-    <span class="token keyword">return</span> Fl
-</code></pre>
-<h5 id="2-2-Temperature-modifier-f-S"><a href="#2-2-Temperature-modifier-f-S" class="headerlink" title="2.2 Temperature modifier $f_{S}$"></a>2.2 Temperature modifier $f_{S}$</h5><pre class=" language-python"><code class="language-python">
-<span class="token keyword">def</span> <span class="token function">Temperature_modifier</span><span class="token punctuation">(</span>Tair<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">global</span> Tau
-    <span class="token keyword">global</span> Xo
-    <span class="token keyword">global</span> Smax
-
-    X <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-    X<span class="token punctuation">.</span>append<span class="token punctuation">(</span>Tair<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> len<span class="token punctuation">(</span>Tair<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-
-        Xk <span class="token operator">=</span> X<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">/</span> Tau<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span>Tair<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span> X<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-
-        X<span class="token punctuation">.</span>append<span class="token punctuation">(</span>Xk<span class="token punctuation">)</span>
-
-    Sk <span class="token operator">=</span> <span class="token punctuation">[</span>x <span class="token operator">-</span> Xo <span class="token keyword">if</span> x <span class="token operator">-</span> Xo <span class="token operator">></span> <span class="token number">0</span> <span class="token keyword">else</span> <span class="token number">0</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> X<span class="token punctuation">]</span>
-
-    fs <span class="token operator">=</span> <span class="token punctuation">[</span>s <span class="token operator">/</span> Smax <span class="token keyword">if</span> s <span class="token operator">/</span> Smax <span class="token operator">&lt;</span> <span class="token number">1</span> <span class="token keyword">else</span> <span class="token number">1</span> <span class="token keyword">for</span> s <span class="token keyword">in</span> Sk<span class="token punctuation">]</span>
-
-    <span class="token keyword">return</span> fs
-</code></pre>
-<h5 id="2-3-VPD-modifier-f-D"><a href="#2-3-VPD-modifier-f-D" class="headerlink" title="2.3 VPD modifier $f_{D}$"></a>2.3 VPD modifier $f_{D}$</h5><pre class=" language-python"><code class="language-python">
-<span class="token keyword">def</span> <span class="token function">VPD_modifier</span><span class="token punctuation">(</span>VPD<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token triple-quoted-string string">"""
-    Note: unit for VPD is kPa
-    """</span>
-    <span class="token keyword">global</span> k
-
-    fd <span class="token operator">=</span> np<span class="token punctuation">.</span>exp<span class="token punctuation">(</span>k <span class="token operator">*</span> VPD<span class="token punctuation">)</span>
-
-    <span class="token keyword">return</span> fd
-</code></pre>
-<h5 id="2-4-Soil-water-modifier"><a href="#2-4-Soil-water-modifier" class="headerlink" title="2.4 Soil water modifier"></a>2.4 Soil water modifier</h5><pre class=" language-python"><code class="language-python">
-<span class="token keyword">def</span> <span class="token function">SWC_modifier</span><span class="token punctuation">(</span>Theta_wp<span class="token punctuation">,</span> Theta_FC<span class="token punctuation">,</span> SWC<span class="token punctuation">,</span> alpha<span class="token punctuation">,</span> nu<span class="token punctuation">)</span><span class="token punctuation">:</span>
-
-    REW <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">(</span>x <span class="token operator">-</span> Theta_wp<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token punctuation">(</span>Theta_FC <span class="token operator">+</span> Theta_wp<span class="token punctuation">)</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> SWC<span class="token punctuation">]</span>
-    Wk <span class="token operator">=</span> <span class="token punctuation">[</span>x <span class="token keyword">if</span> x <span class="token operator">&lt;</span> <span class="token number">1</span> <span class="token keyword">else</span> <span class="token number">1</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> REW<span class="token punctuation">]</span>
-
-    fw1 <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">/</span> <span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">+</span> pow<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">-</span> WK<span class="token punctuation">)</span> <span class="token operator">/</span> alpha<span class="token punctuation">,</span> nu<span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-    fw2 <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">-</span> np<span class="token punctuation">.</span>exp<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span> <span class="token operator">*</span> alpha <span class="token operator">*</span> pow<span class="token punctuation">(</span>Wk<span class="token punctuation">,</span> nu<span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-    <span class="token keyword">return</span> fw1<span class="token punctuation">,</span> fw2
-</code></pre>
-<h5 id="2-5-Daily-random-error-varepsilon-k"><a href="#2-5-Daily-random-error-varepsilon-k" class="headerlink" title="2.5 Daily random error $\varepsilon_{k}$"></a>2.5 Daily random error $\varepsilon_{k}$</h5><pre class=" language-python"><code class="language-python">
-<span class="token keyword">def</span> <span class="token function">Random_error</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-
-    error <span class="token operator">=</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>normal<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span>
-
-    <span class="token keyword">return</span> error
-</code></pre>
-<h4 id="3-Final-model"><a href="#3-Final-model" class="headerlink" title="3 Final model"></a>3 Final model</h4><pre class=" language-python"><code class="language-python">
-<span class="token keyword">def</span> <span class="token function">GPP_estimation</span><span class="token punctuation">(</span>Phi<span class="token punctuation">,</span> VPD<span class="token punctuation">,</span> Tair<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-
-    <span class="token keyword">global</span> Beta
-
-    e <span class="token operator">=</span> Random_error<span class="token punctuation">(</span>n<span class="token punctuation">)</span>
-
-    <span class="token keyword">return</span> Beta <span class="token operator">*</span> Phi <span class="token operator">*</span> Light_modifer<span class="token punctuation">(</span>Phi<span class="token punctuation">)</span> <span class="token operator">*</span> Temperature_modifier<span class="token punctuation">(</span>Tair<span class="token punctuation">)</span> <span class="token operator">*</span> VPD_modifier<span class="token punctuation">(</span>VPD<span class="token punctuation">)</span> <span class="token operator">+</span> e
-</code></pre>
+<p><img src="/images/WEATHER_DATA.png"></p>
+<p>has no such variables, so we have to convert <strong>air pressur</strong> and <strong>air temperature</strong> to <strong>VPD</strong> and <strong>PAR</strong>, respectively. Here we star:</p>
+<h4 id="define-the-constant">1 Define the constant</h4>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"></span><br><span class="line">Beta = <span class="number">0.513</span>  <span class="comment"># Potential daily LUE</span></span><br><span class="line">Gamma = <span class="number">0.0196</span>  <span class="comment"># Empirical parameter</span></span><br><span class="line">Kappa = <span class="number">-0.389</span>  <span class="comment"># Empirical parameter</span></span><br><span class="line">Tau = <span class="number">7.2</span>  <span class="comment"># Time constant of delay process</span></span><br><span class="line">Xo = <span class="number">-4</span>  <span class="comment"># Shreshold value of the delayed temperature</span></span><br><span class="line">Smax = <span class="number">17.3</span>  <span class="comment"># Empirical parameter</span></span><br><span class="line">k = <span class="number">-0.389</span>  <span class="comment"># Empirical parameter</span></span><br></pre></td></tr></tbody></table></figure>
+<h4 id="calculation-for-modifying-factors">2 Calculation for modifying factors</h4>
+<h5 id="light-modifier-f_l">2.1 Light modifier <span class="math inline">\(f_{L}\)</span></h5>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Light_modifer</span><span class="params">(Phi)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    daily light modifer</span></span><br><span class="line"><span class="string">        Input:</span></span><br><span class="line"><span class="string">            Phi is daily APAR with unit of mol m^-2</span></span><br><span class="line"><span class="string">        Output:</span></span><br><span class="line"><span class="string">            Light modifying factors, range from [0,1]</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="keyword">global</span> Gamma</span><br><span class="line"></span><br><span class="line">    Fl = <span class="number">1</span> / (Gamma * Phi + <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> Fl</span><br></pre></td></tr></tbody></table></figure>
+<h5 id="temperature-modifier-f_s">2.2 Temperature modifier <span class="math inline">\(f_{S}\)</span></h5>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Temperature_modifier</span><span class="params">(Tair)</span>:</span></span><br><span class="line">    <span class="keyword">global</span> Tau</span><br><span class="line">    <span class="keyword">global</span> Xo</span><br><span class="line">    <span class="keyword">global</span> Smax</span><br><span class="line"></span><br><span class="line">    X = []</span><br><span class="line">    X.append(Tair[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(Tair)):</span><br><span class="line"></span><br><span class="line">        Xk = X[i - <span class="number">1</span>] + (<span class="number">1</span> / Tau) * (Tair[i] - X[i - <span class="number">1</span>])</span><br><span class="line"></span><br><span class="line">        X.append(Xk)</span><br><span class="line"></span><br><span class="line">    Sk = [x - Xo <span class="keyword">if</span> x - Xo &gt; <span class="number">0</span> <span class="keyword">else</span> <span class="number">0</span> <span class="keyword">for</span> x <span class="keyword">in</span> X]</span><br><span class="line"></span><br><span class="line">    fs = [s / Smax <span class="keyword">if</span> s / Smax &lt; <span class="number">1</span> <span class="keyword">else</span> <span class="number">1</span> <span class="keyword">for</span> s <span class="keyword">in</span> Sk]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> fs</span><br></pre></td></tr></tbody></table></figure>
+<h5 id="vpd-modifier-f_d">2.3 VPD modifier <span class="math inline">\(f_{D}\)</span></h5>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">VPD_modifier</span><span class="params">(VPD)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Note: unit for VPD is kPa</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="keyword">global</span> k</span><br><span class="line"></span><br><span class="line">    fd = np.exp(k * VPD)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> fd</span><br></pre></td></tr></tbody></table></figure>
+<h5 id="soil-water-modifier">2.4 Soil water modifier</h5>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">SWC_modifier</span><span class="params">(Theta_wp, Theta_FC, SWC, alpha, nu)</span>:</span></span><br><span class="line"></span><br><span class="line">    REW = [(x - Theta_wp) / (Theta_FC + Theta_wp) <span class="keyword">for</span> x <span class="keyword">in</span> SWC]</span><br><span class="line">    Wk = [x <span class="keyword">if</span> x &lt; <span class="number">1</span> <span class="keyword">else</span> <span class="number">1</span> <span class="keyword">for</span> x <span class="keyword">in</span> REW]</span><br><span class="line"></span><br><span class="line">    fw1 = <span class="number">1</span> / (<span class="number">1</span> + pow((<span class="number">1</span> - WK) / alpha, nu))</span><br><span class="line"></span><br><span class="line">    fw2 = <span class="number">1</span> - np.exp(<span class="number">-1</span> * alpha * pow(Wk, nu))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> fw1, fw2</span><br></pre></td></tr></tbody></table></figure>
+<h5 id="daily-random-error-varepsilon_k">2.5 Daily random error <span class="math inline">\(\varepsilon_{k}\)</span></h5>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Random_error</span><span class="params">(n)</span>:</span></span><br><span class="line"></span><br><span class="line">    error = np.random.normal(<span class="number">0</span>, <span class="number">1</span>, n)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> error</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="final-model">3 Final model</h4>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">GPP_estimation</span><span class="params">(Phi, VPD, Tair, n)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">global</span> Beta</span><br><span class="line"></span><br><span class="line">    e = Random_error(n)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> Beta * Phi * Light_modifer(Phi) * Temperature_modifier(Tair) * VPD_modifier(VPD) + e</span><br></pre></td></tr></tbody></table></figure>
 <p>Final result just as below:</p>
-<p><img src="/images/GPP.gif" alt=""></p>
-<p><strong>Reference:</strong><br>[1]: Mäkelä, Annikki, et al. “Developing an empirical model of stand GPP with the LUE approach: analysis of eddy covariance data at five contrasting conifer sites in Europe.” Global change biology 14.1 (2008): 92-108.</p>
+<p><img src="/images/GPP.gif"></p>
+<p><strong>Reference:</strong> [1]: Mäkelä, Annikki, et al. "Developing an empirical model of stand GPP with the LUE approach: analysis of eddy covariance data at five contrasting conifer sites in Europe." Global change biology 14.1 (2008): 92-108.</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -1162,7 +1064,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">1.9k</span>&nbsp;字
+                class="white-color">1.8k</span>&nbsp;字
             
             
             
