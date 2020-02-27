@@ -446,7 +446,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    682
+                    683
                 </div>
                 
 
@@ -475,84 +475,84 @@
 <li>其他数据为随机生成，不具有任何实际意义</li>
 <li>基于Python 3.7.6 (Anaconda)</li>
 </ul>
-<h4 id="1-导入必须的modules"><a href="#1-导入必须的modules" class="headerlink" title="1.导入必须的modules"></a>1.导入必须的modules</h4><pre class=" language-lang-python"><code class="language-lang-python">import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
-from mpl_toolkits.basemap import Basemap
-from matplotlib.collections import PolyCollection
-from mpl_toolkits.mplot3d.art3d import Poly3DCollection
-import matplotlib.animation as animation
-import numpy as np
-</code></pre>
+<h4 id="导入必须的modules">1.导入必须的modules</h4>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="im">from</span> mpl_toolkits.mplot3d <span class="im">import</span> Axes3D</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="im">from</span> mpl_toolkits.basemap <span class="im">import</span> Basemap</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="im">from</span> matplotlib.collections <span class="im">import</span> PolyCollection</a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="im">from</span> mpl_toolkits.mplot3d.art3d <span class="im">import</span> Poly3DCollection</a>
+<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="im">import</span> matplotlib.animation <span class="im">as</span> animation</a>
+<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="im">import</span> numpy <span class="im">as</span> np</a></code></pre></div>
 <p>其中<strong>animation</strong>是用来生成最后的gif图片，<strong>Axes3D</strong>和<strong>Poly3DCollection</strong>用于创建3D坐标系和3D的polygon图层的。</p>
-<h4 id="2-数据生成"><a href="#2-数据生成" class="headerlink" title="2.数据生成"></a>2.数据生成</h4><pre class=" language-lang-python"><code class="language-lang-python">lons = np.array([-13.7, -10.8, -13.2, -16.8, -7.99, 7.5, -17.3, -3.7])
-lats = np.array([9.6, 6.3, 8.5, 32.7, 12.5, 8.9, 14.7, 40.39])
-points = np.array([0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6])
-point1 = np.array([0,0,0,0,0,0,0,0])
-
-X = [-20,15,15,-20]
-Y = [0,0,50,50]
-Z= [0.59,0.59,0.59,0.59]
-
-verts = [list(zip(X,Y,Z))]
-
-x, y = map(lons, lats)
-</code></pre>
+<h4 id="数据生成">2.数据生成</h4>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb2-1" data-line-number="1">lons <span class="op">=</span> np.array([<span class="op">-</span><span class="fl">13.7</span>, <span class="fl">-10.8</span>, <span class="fl">-13.2</span>, <span class="fl">-16.8</span>, <span class="fl">-7.99</span>, <span class="fl">7.5</span>, <span class="fl">-17.3</span>, <span class="fl">-3.7</span>])</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">lats <span class="op">=</span> np.array([<span class="fl">9.6</span>, <span class="fl">6.3</span>, <span class="fl">8.5</span>, <span class="fl">32.7</span>, <span class="fl">12.5</span>, <span class="fl">8.9</span>, <span class="fl">14.7</span>, <span class="fl">40.39</span>])</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">points <span class="op">=</span> np.array([<span class="fl">0.6</span>, <span class="fl">0.6</span>, <span class="fl">0.6</span>, <span class="fl">0.6</span>, <span class="fl">0.6</span>, <span class="fl">0.6</span>, <span class="fl">0.6</span>, <span class="fl">0.6</span>])</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4">point1 <span class="op">=</span> np.array([<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>])</a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6">X <span class="op">=</span> [<span class="op">-</span><span class="dv">20</span>,<span class="dv">15</span>,<span class="dv">15</span>,<span class="op">-</span><span class="dv">20</span>]</a>
+<a class="sourceLine" id="cb2-7" data-line-number="7">Y <span class="op">=</span> [<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">50</span>,<span class="dv">50</span>]</a>
+<a class="sourceLine" id="cb2-8" data-line-number="8">Z<span class="op">=</span> [<span class="fl">0.59</span>,<span class="fl">0.59</span>,<span class="fl">0.59</span>,<span class="fl">0.59</span>]</a>
+<a class="sourceLine" id="cb2-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb2-10" data-line-number="10">verts <span class="op">=</span> [<span class="bu">list</span>(<span class="bu">zip</span>(X,Y,Z))]</a>
+<a class="sourceLine" id="cb2-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb2-12" data-line-number="12">x, y <span class="op">=</span> <span class="bu">map</span>(lons, lats)</a></code></pre></div>
 <p>我们创建8个点，其中point1投影在X和Y轴所在平面上（即底面），point将point1向Z轴抬高0.6个单位，让其悬浮与Z=0.6的位置，并且在相应位置创建一个polygon,这样更具有立体感。</p>
-<h4 id="3-构造GIF函数"><a href="#3-构造GIF函数" class="headerlink" title="3.构造GIF函数"></a>3.构造GIF函数</h4><pre class=" language-lang-python"><code class="language-lang-python">## for gif
-def update(i, fig, ax):
-    ax.view_init(elev=20., azim=i)
-    return fig, ax
-</code></pre>
+<h4 id="构造gif函数">3.构造GIF函数</h4>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co">## for gif</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw">def</span> update(i, fig, ax):</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">    ax.view_init(elev<span class="op">=</span><span class="fl">20.</span>, azim<span class="op">=</span>i)</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">    <span class="cf">return</span> fig, ax</a></code></pre></div>
 <p>其中参数<em>elev</em>表示沿着Z轴的高度，<em>azim</em>是<em>azimuth</em>的缩写，即为方位角</p>
-<h4 id="4-创建图层"><a href="#4-创建图层" class="headerlink" title="4.创建图层"></a>4.创建图层</h4><pre class=" language-lang-python"><code class="language-lang-python">map = Basemap(llcrnrlon=-20,llcrnrlat=0,urcrnrlon=15,urcrnrlat=50,
-fix_aspect=False)
-
-fig = plt.figure()
-ax = Axes3D(fig)
-
-ax.azim = 270
-ax.dist = 12
-
-polys = []
-for polygon in map.landpolygons:
-    polys.append(polygon.get_coords())
-
-
-lc = PolyCollection(polys, edgecolor='black',
-                    facecolor='#DDDDDD', closed=False)
-
-ax.add_collection3d(lc)
-ax.add_collection3d(map.drawcoastlines(linewidth=0.25))
-ax.add_collection3d(map.drawcountries(linewidth=0.35))
-
-
-lon_step = 10
-lat_step = 7
-parallel_lon = np.arange(-20, 15, lat_step)
-parallel_lat = np.arange(0,50,lon_step)
-
-ax.scatter3D(x, y, points, color= 'r', alpha=0.8)
-ax.scatter3D(x, y, point1,color= 'b', alpha=0.8)
-ax.add_collection3d(Poly3DCollection(verts,facecolor = "gray",alpha = 0.5))
-
-# label
-ax.set_xlabel('Longitude (°E)', labelpad=20)
-ax.set_ylabel('Latitude (°N)', labelpad=20)
-ax.set_zlabel('blabla...', labelpad=20)
-ax.set_yticks(parallel_lat)
-ax.set_yticklabels(parallel_lat)
-ax.set_xticks(parallel_lon)
-ax.set_xticklabels(parallel_lon)
-
-
-anim = animation.FuncAnimation(fig, update, frames=np.arange(0, 360, 2), 
-                                repeat=True, fargs=(fig, ax))
-## layout gif
-## anim.save('Projection.gif', dpi=80, fps=15,writer='imagemagick')
-##
-plt.show()
-</code></pre>
-<p>最终得到的是如下的gif:<br><img src="/images/Projection.gif" alt=""></p>
+<h4 id="创建图层">4.创建图层</h4>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="bu">map</span> <span class="op">=</span> Basemap(llcrnrlon<span class="op">=-</span><span class="dv">20</span>,llcrnrlat<span class="op">=</span><span class="dv">0</span>,urcrnrlon<span class="op">=</span><span class="dv">15</span>,urcrnrlat<span class="op">=</span><span class="dv">50</span>,</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">fix_aspect<span class="op">=</span><span class="va">False</span>)</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">fig <span class="op">=</span> plt.figure()</a>
+<a class="sourceLine" id="cb4-5" data-line-number="5">ax <span class="op">=</span> Axes3D(fig)</a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7">ax.azim <span class="op">=</span> <span class="dv">270</span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8">ax.dist <span class="op">=</span> <span class="dv">12</span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10">polys <span class="op">=</span> []</a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="cf">for</span> polygon <span class="kw">in</span> <span class="bu">map</span>.landpolygons:</a>
+<a class="sourceLine" id="cb4-12" data-line-number="12">    polys.append(polygon.get_coords())</a>
+<a class="sourceLine" id="cb4-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb4-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb4-15" data-line-number="15">lc <span class="op">=</span> PolyCollection(polys, edgecolor<span class="op">=</span><span class="st">'black'</span>,</a>
+<a class="sourceLine" id="cb4-16" data-line-number="16">                    facecolor<span class="op">=</span><span class="st">'#DDDDDD'</span>, closed<span class="op">=</span><span class="va">False</span>)</a>
+<a class="sourceLine" id="cb4-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb4-18" data-line-number="18">ax.add_collection3d(lc)</a>
+<a class="sourceLine" id="cb4-19" data-line-number="19">ax.add_collection3d(<span class="bu">map</span>.drawcoastlines(linewidth<span class="op">=</span><span class="fl">0.25</span>))</a>
+<a class="sourceLine" id="cb4-20" data-line-number="20">ax.add_collection3d(<span class="bu">map</span>.drawcountries(linewidth<span class="op">=</span><span class="fl">0.35</span>))</a>
+<a class="sourceLine" id="cb4-21" data-line-number="21"></a>
+<a class="sourceLine" id="cb4-22" data-line-number="22"></a>
+<a class="sourceLine" id="cb4-23" data-line-number="23">lon_step <span class="op">=</span> <span class="dv">10</span></a>
+<a class="sourceLine" id="cb4-24" data-line-number="24">lat_step <span class="op">=</span> <span class="dv">7</span></a>
+<a class="sourceLine" id="cb4-25" data-line-number="25">parallel_lon <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">20</span>, <span class="dv">15</span>, lat_step)</a>
+<a class="sourceLine" id="cb4-26" data-line-number="26">parallel_lat <span class="op">=</span> np.arange(<span class="dv">0</span>,<span class="dv">50</span>,lon_step)</a>
+<a class="sourceLine" id="cb4-27" data-line-number="27"></a>
+<a class="sourceLine" id="cb4-28" data-line-number="28">ax.scatter3D(x, y, points, color<span class="op">=</span> <span class="st">'r'</span>, alpha<span class="op">=</span><span class="fl">0.8</span>)</a>
+<a class="sourceLine" id="cb4-29" data-line-number="29">ax.scatter3D(x, y, point1,color<span class="op">=</span> <span class="st">'b'</span>, alpha<span class="op">=</span><span class="fl">0.8</span>)</a>
+<a class="sourceLine" id="cb4-30" data-line-number="30">ax.add_collection3d(Poly3DCollection(verts,facecolor <span class="op">=</span> <span class="st">"gray"</span>,alpha <span class="op">=</span> <span class="fl">0.5</span>))</a>
+<a class="sourceLine" id="cb4-31" data-line-number="31"></a>
+<a class="sourceLine" id="cb4-32" data-line-number="32"><span class="co"># label</span></a>
+<a class="sourceLine" id="cb4-33" data-line-number="33">ax.set_xlabel(<span class="st">'Longitude (°E)'</span>, labelpad<span class="op">=</span><span class="dv">20</span>)</a>
+<a class="sourceLine" id="cb4-34" data-line-number="34">ax.set_ylabel(<span class="st">'Latitude (°N)'</span>, labelpad<span class="op">=</span><span class="dv">20</span>)</a>
+<a class="sourceLine" id="cb4-35" data-line-number="35">ax.set_zlabel(<span class="st">'blabla...'</span>, labelpad<span class="op">=</span><span class="dv">20</span>)</a>
+<a class="sourceLine" id="cb4-36" data-line-number="36">ax.set_yticks(parallel_lat)</a>
+<a class="sourceLine" id="cb4-37" data-line-number="37">ax.set_yticklabels(parallel_lat)</a>
+<a class="sourceLine" id="cb4-38" data-line-number="38">ax.set_xticks(parallel_lon)</a>
+<a class="sourceLine" id="cb4-39" data-line-number="39">ax.set_xticklabels(parallel_lon)</a>
+<a class="sourceLine" id="cb4-40" data-line-number="40"></a>
+<a class="sourceLine" id="cb4-41" data-line-number="41"></a>
+<a class="sourceLine" id="cb4-42" data-line-number="42">anim <span class="op">=</span> animation.FuncAnimation(fig, update, frames<span class="op">=</span>np.arange(<span class="dv">0</span>, <span class="dv">360</span>, <span class="dv">2</span>), </a>
+<a class="sourceLine" id="cb4-43" data-line-number="43">                                repeat<span class="op">=</span><span class="va">True</span>, fargs<span class="op">=</span>(fig, ax))</a>
+<a class="sourceLine" id="cb4-44" data-line-number="44"><span class="co">## layout gif</span></a>
+<a class="sourceLine" id="cb4-45" data-line-number="45"><span class="co">## anim.save('Projection.gif', dpi=80, fps=15,writer='imagemagick')</span></a>
+<a class="sourceLine" id="cb4-46" data-line-number="46"><span class="co">##</span></a>
+<a class="sourceLine" id="cb4-47" data-line-number="47">plt.show()</a></code></pre></div>
+<p>最终得到的是如下的gif: <img src="/images/Projection.gif"></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -908,8 +908,10 @@ plt.show()
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1.什么是HEXOHEXO 是一个利用Markdown渲染的，快速布局博客的框架,在几秒内，即可利用靓丽的主题生成静态网页[1]。具体更多的细节请查看官网的doc。
-2.配套其他软件我们首先需要安装Node.js,再在Node.js中利用n
+                            1.什么是HEXO
+HEXO 是一个利用Markdown渲染的，快速布局博客的框架,在几秒内，即可利用靓丽的主题生成静态网页[1]。具体更多的细节请查看官网的doc。
+2.配套其他软件
+我们首先需要安装Node.js,再在Node.js中利
                         
                     </div>
                     <div class="publish-info">
@@ -1294,24 +1296,7 @@ $(function () {
             all[i].SourceElement().parentNode.className += ' has-jax';
     });
 </script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 
 </html>
