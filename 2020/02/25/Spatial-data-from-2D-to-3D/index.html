@@ -475,79 +475,83 @@
 <li>其他数据为随机生成，不具有任何实际意义</li>
 <li>基于Python 3.7.6 (Anaconda)</li>
 </ul>
-<h4 id="1-导入必须的modules"><a href="#1-导入必须的modules" class="headerlink" title="1.导入必须的modules"></a>1.导入必须的modules</h4><pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
-<span class="token keyword">from</span> mpl_toolkits<span class="token punctuation">.</span>mplot3d <span class="token keyword">import</span> Axes3D
-<span class="token keyword">from</span> mpl_toolkits<span class="token punctuation">.</span>basemap <span class="token keyword">import</span> Basemap
-<span class="token keyword">from</span> matplotlib<span class="token punctuation">.</span>collections <span class="token keyword">import</span> PolyCollection
-<span class="token keyword">from</span> mpl_toolkits<span class="token punctuation">.</span>mplot3d<span class="token punctuation">.</span>art3d <span class="token keyword">import</span> Poly3DCollection
-<span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>animation <span class="token keyword">as</span> animation
-<span class="token keyword">import</span> numpy <span class="token keyword">as</span> np</code></pre>
+<h4 id="1-导入必须的modules"><a href="#1-导入必须的modules" class="headerlink" title="1.导入必须的modules"></a>1.导入必须的modules</h4><pre class=" language-lang-python"><code class="language-lang-python">import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+from mpl_toolkits.basemap import Basemap
+from matplotlib.collections import PolyCollection
+from mpl_toolkits.mplot3d.art3d import Poly3DCollection
+import matplotlib.animation as animation
+import numpy as np
+</code></pre>
 <p>其中<strong>animation</strong>是用来生成最后的gif图片，<strong>Axes3D</strong>和<strong>Poly3DCollection</strong>用于创建3D坐标系和3D的polygon图层的。</p>
-<h4 id="2-数据生成"><a href="#2-数据生成" class="headerlink" title="2.数据生成"></a>2.数据生成</h4><pre class=" language-python"><code class="language-python">lons <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">13.7</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">10.8</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">13.2</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">16.8</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">7.99</span><span class="token punctuation">,</span> <span class="token number">7.5</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">17.3</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">3.7</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-lats <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">9.6</span><span class="token punctuation">,</span> <span class="token number">6.3</span><span class="token punctuation">,</span> <span class="token number">8.5</span><span class="token punctuation">,</span> <span class="token number">32.7</span><span class="token punctuation">,</span> <span class="token number">12.5</span><span class="token punctuation">,</span> <span class="token number">8.9</span><span class="token punctuation">,</span> <span class="token number">14.7</span><span class="token punctuation">,</span> <span class="token number">40.39</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-points <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">0.6</span><span class="token punctuation">,</span> <span class="token number">0.6</span><span class="token punctuation">,</span> <span class="token number">0.6</span><span class="token punctuation">,</span> <span class="token number">0.6</span><span class="token punctuation">,</span> <span class="token number">0.6</span><span class="token punctuation">,</span> <span class="token number">0.6</span><span class="token punctuation">,</span> <span class="token number">0.6</span><span class="token punctuation">,</span> <span class="token number">0.6</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-point1 <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<h4 id="2-数据生成"><a href="#2-数据生成" class="headerlink" title="2.数据生成"></a>2.数据生成</h4><pre class=" language-lang-python"><code class="language-lang-python">lons = np.array([-13.7, -10.8, -13.2, -16.8, -7.99, 7.5, -17.3, -3.7])
+lats = np.array([9.6, 6.3, 8.5, 32.7, 12.5, 8.9, 14.7, 40.39])
+points = np.array([0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6])
+point1 = np.array([0,0,0,0,0,0,0,0])
 
-X <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">20</span><span class="token punctuation">,</span><span class="token number">15</span><span class="token punctuation">,</span><span class="token number">15</span><span class="token punctuation">,</span><span class="token operator">-</span><span class="token number">20</span><span class="token punctuation">]</span>
-Y <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">50</span><span class="token punctuation">,</span><span class="token number">50</span><span class="token punctuation">]</span>
-Z<span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0.59</span><span class="token punctuation">,</span><span class="token number">0.59</span><span class="token punctuation">,</span><span class="token number">0.59</span><span class="token punctuation">,</span><span class="token number">0.59</span><span class="token punctuation">]</span>
+X = [-20,15,15,-20]
+Y = [0,0,50,50]
+Z= [0.59,0.59,0.59,0.59]
 
-verts <span class="token operator">=</span> <span class="token punctuation">[</span>list<span class="token punctuation">(</span>zip<span class="token punctuation">(</span>X<span class="token punctuation">,</span>Y<span class="token punctuation">,</span>Z<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+verts = [list(zip(X,Y,Z))]
 
-x<span class="token punctuation">,</span> y <span class="token operator">=</span> map<span class="token punctuation">(</span>lons<span class="token punctuation">,</span> lats<span class="token punctuation">)</span></code></pre>
+x, y = map(lons, lats)
+</code></pre>
 <p>我们创建8个点，其中point1投影在X和Y轴所在平面上（即底面），point将point1向Z轴抬高0.6个单位，让其悬浮与Z=0.6的位置，并且在相应位置创建一个polygon,这样更具有立体感。</p>
-<h4 id="3-构造GIF函数"><a href="#3-构造GIF函数" class="headerlink" title="3.构造GIF函数"></a>3.构造GIF函数</h4><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">## for gif</span>
-<span class="token keyword">def</span> <span class="token function">update</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> fig<span class="token punctuation">,</span> ax<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    ax<span class="token punctuation">.</span>view_init<span class="token punctuation">(</span>elev<span class="token operator">=</span><span class="token number">20</span><span class="token punctuation">.</span><span class="token punctuation">,</span> azim<span class="token operator">=</span>i<span class="token punctuation">)</span>
-    <span class="token keyword">return</span> fig<span class="token punctuation">,</span> ax</code></pre>
+<h4 id="3-构造GIF函数"><a href="#3-构造GIF函数" class="headerlink" title="3.构造GIF函数"></a>3.构造GIF函数</h4><pre class=" language-lang-python"><code class="language-lang-python">## for gif
+def update(i, fig, ax):
+    ax.view_init(elev=20., azim=i)
+    return fig, ax
+</code></pre>
 <p>其中参数<em>elev</em>表示沿着Z轴的高度，<em>azim</em>是<em>azimuth</em>的缩写，即为方位角</p>
-<h4 id="4-创建图层"><a href="#4-创建图层" class="headerlink" title="4.创建图层"></a>4.创建图层</h4><pre class=" language-python"><code class="language-python">map <span class="token operator">=</span> Basemap<span class="token punctuation">(</span>llcrnrlon<span class="token operator">=</span><span class="token operator">-</span><span class="token number">20</span><span class="token punctuation">,</span>llcrnrlat<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span>urcrnrlon<span class="token operator">=</span><span class="token number">15</span><span class="token punctuation">,</span>urcrnrlat<span class="token operator">=</span><span class="token number">50</span><span class="token punctuation">,</span>
-fix_aspect<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
+<h4 id="4-创建图层"><a href="#4-创建图层" class="headerlink" title="4.创建图层"></a>4.创建图层</h4><pre class=" language-lang-python"><code class="language-lang-python">map = Basemap(llcrnrlon=-20,llcrnrlat=0,urcrnrlon=15,urcrnrlat=50,
+fix_aspect=False)
 
-fig <span class="token operator">=</span> plt<span class="token punctuation">.</span>figure<span class="token punctuation">(</span><span class="token punctuation">)</span>
-ax <span class="token operator">=</span> Axes3D<span class="token punctuation">(</span>fig<span class="token punctuation">)</span>
+fig = plt.figure()
+ax = Axes3D(fig)
 
-ax<span class="token punctuation">.</span>azim <span class="token operator">=</span> <span class="token number">270</span>
-ax<span class="token punctuation">.</span>dist <span class="token operator">=</span> <span class="token number">12</span>
+ax.azim = 270
+ax.dist = 12
 
-polys <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-<span class="token keyword">for</span> polygon <span class="token keyword">in</span> map<span class="token punctuation">.</span>landpolygons<span class="token punctuation">:</span>
-    polys<span class="token punctuation">.</span>append<span class="token punctuation">(</span>polygon<span class="token punctuation">.</span>get_coords<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-
-lc <span class="token operator">=</span> PolyCollection<span class="token punctuation">(</span>polys<span class="token punctuation">,</span> edgecolor<span class="token operator">=</span><span class="token string">'black'</span><span class="token punctuation">,</span>
-                    facecolor<span class="token operator">=</span><span class="token string">'#DDDDDD'</span><span class="token punctuation">,</span> closed<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
-
-ax<span class="token punctuation">.</span>add_collection3d<span class="token punctuation">(</span>lc<span class="token punctuation">)</span>
-ax<span class="token punctuation">.</span>add_collection3d<span class="token punctuation">(</span>map<span class="token punctuation">.</span>drawcoastlines<span class="token punctuation">(</span>linewidth<span class="token operator">=</span><span class="token number">0.25</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-ax<span class="token punctuation">.</span>add_collection3d<span class="token punctuation">(</span>map<span class="token punctuation">.</span>drawcountries<span class="token punctuation">(</span>linewidth<span class="token operator">=</span><span class="token number">0.35</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+polys = []
+for polygon in map.landpolygons:
+    polys.append(polygon.get_coords())
 
 
-lon_step <span class="token operator">=</span> <span class="token number">10</span>
-lat_step <span class="token operator">=</span> <span class="token number">7</span>
-parallel_lon <span class="token operator">=</span> np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">15</span><span class="token punctuation">,</span> lat_step<span class="token punctuation">)</span>
-parallel_lat <span class="token operator">=</span> np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">50</span><span class="token punctuation">,</span>lon_step<span class="token punctuation">)</span>
+lc = PolyCollection(polys, edgecolor='black',
+                    facecolor='#DDDDDD', closed=False)
 
-ax<span class="token punctuation">.</span>scatter3D<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> points<span class="token punctuation">,</span> color<span class="token operator">=</span> <span class="token string">'r'</span><span class="token punctuation">,</span> alpha<span class="token operator">=</span><span class="token number">0.8</span><span class="token punctuation">)</span>
-ax<span class="token punctuation">.</span>scatter3D<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> point1<span class="token punctuation">,</span>color<span class="token operator">=</span> <span class="token string">'b'</span><span class="token punctuation">,</span> alpha<span class="token operator">=</span><span class="token number">0.8</span><span class="token punctuation">)</span>
-ax<span class="token punctuation">.</span>add_collection3d<span class="token punctuation">(</span>Poly3DCollection<span class="token punctuation">(</span>verts<span class="token punctuation">,</span>facecolor <span class="token operator">=</span> <span class="token string">"gray"</span><span class="token punctuation">,</span>alpha <span class="token operator">=</span> <span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-<span class="token comment" spellcheck="true"># label</span>
-ax<span class="token punctuation">.</span>set_xlabel<span class="token punctuation">(</span><span class="token string">'Longitude (°E)'</span><span class="token punctuation">,</span> labelpad<span class="token operator">=</span><span class="token number">20</span><span class="token punctuation">)</span>
-ax<span class="token punctuation">.</span>set_ylabel<span class="token punctuation">(</span><span class="token string">'Latitude (°N)'</span><span class="token punctuation">,</span> labelpad<span class="token operator">=</span><span class="token number">20</span><span class="token punctuation">)</span>
-ax<span class="token punctuation">.</span>set_zlabel<span class="token punctuation">(</span><span class="token string">'blabla...'</span><span class="token punctuation">,</span> labelpad<span class="token operator">=</span><span class="token number">20</span><span class="token punctuation">)</span>
-ax<span class="token punctuation">.</span>set_yticks<span class="token punctuation">(</span>parallel_lat<span class="token punctuation">)</span>
-ax<span class="token punctuation">.</span>set_yticklabels<span class="token punctuation">(</span>parallel_lat<span class="token punctuation">)</span>
-ax<span class="token punctuation">.</span>set_xticks<span class="token punctuation">(</span>parallel_lon<span class="token punctuation">)</span>
-ax<span class="token punctuation">.</span>set_xticklabels<span class="token punctuation">(</span>parallel_lon<span class="token punctuation">)</span>
+ax.add_collection3d(lc)
+ax.add_collection3d(map.drawcoastlines(linewidth=0.25))
+ax.add_collection3d(map.drawcountries(linewidth=0.35))
 
 
-anim <span class="token operator">=</span> animation<span class="token punctuation">.</span>FuncAnimation<span class="token punctuation">(</span>fig<span class="token punctuation">,</span> update<span class="token punctuation">,</span> frames<span class="token operator">=</span>np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">360</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
-                                repeat<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> fargs<span class="token operator">=</span><span class="token punctuation">(</span>fig<span class="token punctuation">,</span> ax<span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">## layout gif</span>
-<span class="token comment" spellcheck="true">## anim.save('Projection.gif', dpi=80, fps=15,writer='imagemagick')</span>
-<span class="token comment" spellcheck="true">##</span>
-plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+lon_step = 10
+lat_step = 7
+parallel_lon = np.arange(-20, 15, lat_step)
+parallel_lat = np.arange(0,50,lon_step)
+
+ax.scatter3D(x, y, points, color= 'r', alpha=0.8)
+ax.scatter3D(x, y, point1,color= 'b', alpha=0.8)
+ax.add_collection3d(Poly3DCollection(verts,facecolor = "gray",alpha = 0.5))
+
+# label
+ax.set_xlabel('Longitude (°E)', labelpad=20)
+ax.set_ylabel('Latitude (°N)', labelpad=20)
+ax.set_zlabel('blabla...', labelpad=20)
+ax.set_yticks(parallel_lat)
+ax.set_yticklabels(parallel_lat)
+ax.set_xticks(parallel_lon)
+ax.set_xticklabels(parallel_lon)
+
+
+anim = animation.FuncAnimation(fig, update, frames=np.arange(0, 360, 2), 
+                                repeat=True, fargs=(fig, ax))
+## layout gif
+## anim.save('Projection.gif', dpi=80, fps=15,writer='imagemagick')
+##
+plt.show()
+</code></pre>
 <p>最终得到的是如下的gif:<br><img src="/images/Projection.gif" alt=""></p>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -1290,7 +1294,24 @@ $(function () {
             all[i].SourceElement().parentNode.className += ' has-jax';
     });
 </script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 </body>
 
 </html>

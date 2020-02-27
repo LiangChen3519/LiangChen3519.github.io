@@ -581,7 +581,7 @@
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"Markdown","value":1},{"name":"Python","value":2}],
+                data: [{"name":"Python","value":2},{"name":"Markdown","value":1}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -605,7 +605,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: ["HEXO","Matery","博客","modeling","Forest","Carbon flux","Basemap","Matplotlib","gif"]
+                data: ["modeling","Forest","Carbon flux","Basemap","Matplotlib","gif","HEXO","Matery","博客"]
             }
         ],
         yAxis: [
@@ -735,24 +735,6 @@
         <div class="tag-chips center-align">
             
             
-            <a href="/tags/HEXO/">
-                <span class="chip center-align waves-effect waves-light chip-default">HEXO</span>
-            </a>
-            
-            
-            
-            <a href="/tags/Matery/">
-                <span class="chip center-align waves-effect waves-light chip-default">Matery</span>
-            </a>
-            
-            
-            
-            <a href="/tags/%E5%8D%9A%E5%AE%A2/">
-                <span class="chip center-align waves-effect waves-light chip-default">博客</span>
-            </a>
-            
-            
-            
             <a href="/tags/modeling/">
                 <span class="chip center-align waves-effect waves-light chip-default">modeling</span>
             </a>
@@ -785,6 +767,24 @@
             
             <a href="/tags/gif/">
                 <span class="chip center-align waves-effect waves-light chip-default">gif</span>
+            </a>
+            
+            
+            
+            <a href="/tags/HEXO/">
+                <span class="chip center-align waves-effect waves-light chip-default">HEXO</span>
+            </a>
+            
+            
+            
+            <a href="/tags/Matery/">
+                <span class="chip center-align waves-effect waves-light chip-default">Matery</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E5%8D%9A%E5%AE%A2/">
+                <span class="chip center-align waves-effect waves-light chip-default">博客</span>
             </a>
             
             
@@ -1136,7 +1136,24 @@ $(function () {
             all[i].SourceElement().parentNode.className += ' has-jax';
     });
 </script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 </body>
 
 </html>
