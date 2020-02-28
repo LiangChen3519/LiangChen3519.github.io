@@ -446,7 +446,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    674
+                    677
                 </div>
                 
 
@@ -470,7 +470,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>This Blog aims to simply step-by-step replicate (not so strict) the basic results of the paper titled as <em>Developing an empirical model of stand GPP with the LUE model approach: analysis of eddy covriance data at five constrasting conifer sites in Europe</em> $^{[1]}$. Mäkelä’s paper developed a statistical model for daily gross primary production (GPP) in boreal and temperate coniferous forests based on <strong>Light Use Efficiency (LUE)</strong>. So we plan to apply weather dataset to simulate daily Gross Primary Production (GPP) by using Python.</p>
-<p>To make the model easily to understand, we just using the fixed parameters supported by authors in the paper. And the fixed parameters list as follow:</p>
+<p>To make the model easily to be understood, we just using the fixed parameters supported by authors in the paper. And the fixed parameters list as follow:</p>
 <table>
 <thead>
 <tr>
@@ -520,12 +520,12 @@
 <p> And the main model is:<br>  $$P_{k} = \beta \Phi_{k}\prod_i f_{ik}+\varepsilon_{k} \tag1$$</p>
 <p> Where:</p>
 <p> $P_{k}$ is GPP ($gC\cdot m^{2}\cdot day^{-1}$).</p>
-<p> $\prod_{i} f_{ik}$ for me, means product of the 4 different modifying factors. </p>
-<p> $\varepsilon_{k}$ here, i assumed that, follows the normal distribution.</p>
+<p> $\prod_{i} f_{ik}$ for me means the product of the 4 different modifying factors. </p>
+<p> $\varepsilon_{k}$ here, I assumed that, follows the normal distribution.</p>
 <p> $\Theta$ is APAR with unit $mol \cdot m^{-2}$.</p>
-<p>The model is based on <strong>Daily data</strong>, so before we input all variables into model, make sure the time span! Besides, due to input variables include <strong>VPD</strong> and <strong>PAR</strong>, however the weather dataset struct (shows as below:)</p>
+<p>The model is based on <strong>Daily data</strong>, so before we input all variables into the model, make sure the time scale! Besides, due to input variables include <strong>VPD</strong> and <strong>PAR</strong>, however the weather dataset struct (shows as below:)</p>
 <p><img src="/images/WEATHER_DATA.png" alt=""></p>
-<p> has no such variables, so we have to convert <strong>air pressur</strong> and <strong>air temperature</strong> to <strong>VPD</strong> and <strong>PAR</strong>, respectively.<br>Here we star:</p>
+<p> has no such variables, so we have to convert <strong>air pressur</strong> and <strong>air temperature</strong> to <strong>VPD</strong> and <strong>PAR</strong>, respectively.<br>Here we start:</p>
 <h4 id="1-Define-the-constant"><a href="#1-Define-the-constant" class="headerlink" title="1 Define the constant"></a>1 Define the constant</h4><pre class=" language-python"><code class="language-python">
 Beta <span class="token operator">=</span> <span class="token number">0.513</span>  <span class="token comment" spellcheck="true"># Potential daily LUE</span>
 Gamma <span class="token operator">=</span> <span class="token number">0.0196</span>  <span class="token comment" spellcheck="true"># Empirical parameter</span>
