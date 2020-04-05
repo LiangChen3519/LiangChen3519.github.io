@@ -4,8 +4,8 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="Spatial data from 2D to 3D, Liang Chen&#39;s Blog">
-    <meta name="description" content="一般来说，我们展示空间数据，如果不是点云数据的话，大多数为二维的。比如说X轴为longitude，Y轴为latitude，那我们是否可以也利用Z轴，在添加一个属性使其，投影到3D中去呢？比如说Z轴为高程，再比如说对于多时间序列的是空间数据，">
+    <meta name="keywords" content="Extracting records from Google scholar, Liang Chen&#39;s Blog">
+    <meta name="description" content="Usually, we like to search academic paper using Google Scholar, but sometimes, it’s an annoying thing that if we want to">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Spatial data from 2D to 3D | Liang Chen&#39;s Blog</title>
+    <title>Extracting records from Google scholar | Liang Chen&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -282,12 +282,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Spatial data from 2D to 3D</h1>
+                    <h1 class="description center-align post-title">Extracting records from Google scholar</h1>
                 </div>
             </div>
         </div>
@@ -404,16 +404,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Basemap/">
-                                <span class="chip bg-color">Basemap</span>
+                            <a href="/tags/Google-scholar/">
+                                <span class="chip bg-color">Google scholar</span>
                             </a>
                         
-                            <a href="/tags/Matplotlib/">
-                                <span class="chip bg-color">Matplotlib</span>
+                            <a href="/tags/Web-Crawler/">
+                                <span class="chip bg-color">Web Crawler</span>
                             </a>
                         
-                            <a href="/tags/gif/">
-                                <span class="chip bg-color">gif</span>
+                            <a href="/tags/Beautifulsoup/">
+                                <span class="chip bg-color">Beautifulsoup</span>
                             </a>
                         
                     </div>
@@ -425,7 +425,7 @@
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
                             <a href="/categories/Python/" class="post-category">
-                                Python
+                                Python,
                             </a>
                         
                     </div>
@@ -437,7 +437,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-02-25
+                    2020-04-05
                 </div>
                 
 
@@ -446,7 +446,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    682
+                    541
                 </div>
                 
 
@@ -469,86 +469,75 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>一般来说，我们展示空间数据，如果不是点云数据的话，大多数为二维的。比如说X轴为longitude，Y轴为latitude，那我们是否可以也利用Z轴，在添加一个属性使其，投影到3D中去呢？比如说Z轴为高程，再比如说对于多时间序列的是空间数据，是否可以把Z轴定义为时间轴等等。所以本blog的目的就是来探索一下可行性，需要说明的是：</p>
-<ul>
-<li>空间数据(矢量数据)来自Basemap自带数据集</li>
-<li>其他数据为随机生成，不具有任何实际意义</li>
-<li>基于Python 3.7.6 (Anaconda)</li>
-</ul>
-<h4 id="1-导入必须的modules"><a href="#1-导入必须的modules" class="headerlink" title="1.导入必须的modules"></a>1.导入必须的modules</h4><pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
-<span class="token keyword">from</span> mpl_toolkits<span class="token punctuation">.</span>mplot3d <span class="token keyword">import</span> Axes3D
-<span class="token keyword">from</span> mpl_toolkits<span class="token punctuation">.</span>basemap <span class="token keyword">import</span> Basemap
-<span class="token keyword">from</span> matplotlib<span class="token punctuation">.</span>collections <span class="token keyword">import</span> PolyCollection
-<span class="token keyword">from</span> mpl_toolkits<span class="token punctuation">.</span>mplot3d<span class="token punctuation">.</span>art3d <span class="token keyword">import</span> Poly3DCollection
-<span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>animation <span class="token keyword">as</span> animation
-<span class="token keyword">import</span> numpy <span class="token keyword">as</span> np</code></pre>
-<p>其中<strong>animation</strong>是用来生成最后的gif图片，<strong>Axes3D</strong>和<strong>Poly3DCollection</strong>用于创建3D坐标系和3D的polygon图层的。</p>
-<h4 id="2-数据生成"><a href="#2-数据生成" class="headerlink" title="2.数据生成"></a>2.数据生成</h4><pre class=" language-python"><code class="language-python">lons <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">13.7</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">10.8</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">13.2</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">16.8</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">7.99</span><span class="token punctuation">,</span> <span class="token number">7.5</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">17.3</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">3.7</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-lats <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">9.6</span><span class="token punctuation">,</span> <span class="token number">6.3</span><span class="token punctuation">,</span> <span class="token number">8.5</span><span class="token punctuation">,</span> <span class="token number">32.7</span><span class="token punctuation">,</span> <span class="token number">12.5</span><span class="token punctuation">,</span> <span class="token number">8.9</span><span class="token punctuation">,</span> <span class="token number">14.7</span><span class="token punctuation">,</span> <span class="token number">40.39</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-points <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">0.6</span><span class="token punctuation">,</span> <span class="token number">0.6</span><span class="token punctuation">,</span> <span class="token number">0.6</span><span class="token punctuation">,</span> <span class="token number">0.6</span><span class="token punctuation">,</span> <span class="token number">0.6</span><span class="token punctuation">,</span> <span class="token number">0.6</span><span class="token punctuation">,</span> <span class="token number">0.6</span><span class="token punctuation">,</span> <span class="token number">0.6</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-point1 <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+                <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>Usually, we like to search academic paper using <a href="https://scholar.google.com/" target="_blank" rel="noopener">Google Scholar</a>, but sometimes, it’s an annoying thing that if we want to download all of the records mannually. And we may asking that dose anything can help improving the efficiency? The answer is <strong>yes!</strong> The following code helps you extracting usefull information about what you’ve searched in google scholar, including <em>title</em>, <em>author</em>, <em>journal</em>, <em>year</em> and <em>cited amount</em>.</p>
+<h4 id="1-Loading-modules"><a href="#1-Loading-modules" class="headerlink" title="1.Loading modules"></a>1.Loading modules</h4><pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> requests
+<span class="token keyword">import</span> urllib<span class="token punctuation">.</span>parse
+<span class="token keyword">import</span> urllib<span class="token punctuation">.</span>request
+<span class="token keyword">import</span> re
+<span class="token keyword">from</span> bs4 <span class="token keyword">import</span> BeautifulSoup  
+<span class="token keyword">import</span> random
+<span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+<span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd
+<span class="token keyword">import</span> time</code></pre>
+<h4 id="2-Main-program"><a href="#2-Main-program" class="headerlink" title="2. Main program"></a>2. Main program</h4><pre class=" language-python"><code class="language-python"><span class="token operator">or</span> i <span class="token keyword">in</span> np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">51</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment" spellcheck="true"># based on how many your records</span>
+    url <span class="token operator">=</span> f<span class="token string">"https://scholar.google.com/scholar?start={10*i}&amp;q=Keywords&amp;hl=en&amp;as_sdt=1,5&amp;as_yhi=2020&amp;as_vis=1"</span>
+    <span class="token comment" spellcheck="true"># build header</span>
+    headers <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'authority'</span><span class="token punctuation">:</span> <span class="token string">'scholar.google.com'</span><span class="token punctuation">,</span>
+               <span class="token string">'User-Agent'</span><span class="token punctuation">:</span> <span class="token string">'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Mobile Safari/537.36'</span><span class="token punctuation">,</span>
+               <span class="token string">'Accept'</span><span class="token punctuation">:</span> <span class="token string">'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'</span><span class="token punctuation">,</span>
+               <span class="token string">'Accept-Language'</span><span class="token punctuation">:</span> <span class="token string">'en,zh;q=0.9,zh-CN;q=0.8'</span><span class="token punctuation">,</span>
+               <span class="token string">'Referer'</span><span class="token punctuation">:</span> <span class="token string">'https://scholar.google.com/scholar?start=10&amp;q=bamboo+author:Huaqiang+author:Du&amp;hl=en&amp;as_sdt=1,5&amp;as_yhi=2020&amp;as_vis=1'</span><span class="token punctuation">,</span>
+               <span class="token string">'method'</span><span class="token punctuation">:</span> <span class="token string">'GET'</span><span class="token punctuation">,</span>
+               <span class="token string">'path'</span><span class="token punctuation">:</span> <span class="token string">'/scholar?hl=en&amp;as_sdt=1%2C5&amp;as_yhi=2020&amp;as_vis=1&amp;q=bamboo+author%3AHuaqiang+author%3ADu&amp;btnG='</span><span class="token punctuation">,</span>
+               <span class="token string">'scheme'</span><span class="token punctuation">:</span> <span class="token string">'https'</span><span class="token punctuation">,</span>
+               <span class="token string">'Connection'</span><span class="token punctuation">:</span><span class="token string">'keep-alive'</span><span class="token punctuation">,</span>
+               <span class="token string">'cookie'</span><span class="token punctuation">:</span><span class="token string">'ANID=AHWqTUlwp9AChnB1G9ON-TlDdW_RJmENB-r7PTh3AXs9UpNfLS5qLORhZBSxLxTN; SEARCH_SAMESITE=CgQI-o4B; CONSENT=YES+FI.en+V9; OGPC=19016257-4:; SID=uQeEwKzFJZIZTS9yRONkQU63_4ofcBzqQwsRUsi08WJyQaol2DGS10sXCBlEtu7-4roAQg.; __Secure-3PSID=uQeEwKzFJZIZTS9yRONkQU63_4ofcBzqQwsRUsi08WJyQaolyI4Xat2IWCyCccIj2uyfHA.; HSID=A1vnpY6_C5z8nx5dH; SSID=A-YURqcpWDEyCWRmC; APISID=C7NMIgSnkTH_j_2N/Ayb1x1PaEMBzFtAtJ; SAPISID=GT6SZnpdXTrqGHsu/AGuNQ1HqKzm-vr-Sp; __Secure-HSID=A1vnpY6_C5z8nx5dH; __Secure-SSID=A-YURqcpWDEyCWRmC; __Secure-APISID=C7NMIgSnkTH_j_2N/Ayb1x1PaEMBzFtAtJ; __Secure-3PAPISID=GT6SZnpdXTrqGHsu/AGuNQ1HqKzm-vr-Sp; GSP=IN=7e6cc990821af63:LD=en:DT=1:LM=1584790268:S=m3_uYIdhSgvN-gUs; NID=200=Cy_ULDlTPYy7uGkF3ePU_o3Ul70JHVgaBw9Y6qW9WhTKDUJZ1sGfxfMRXtu0orTXGqRWUO0O09MWycz_VlAVHYmYyQfvD8bC3shqVdjfjQ689MQ5snApr9_gpQRykq_NQGdn9x18rlV9Jc24akByU4OMiPDuUSYPCSgQiNKOOpcPY7TQNflWWL63-OvhXsFK4oVImsin81yBPiw7u1PrDuLEFwpaarFAg97MoryYNYg1SO_jjWnl0ENh20J30FTvhNpJqYE81Jg; 1P_JAR=2020-3-23-20; SIDCC=AJi4QfH1NjwH4VKH7uLlTj-g3RQVGXlHQu-tdMe8O_2NqN3dftn63OLdk3eA8syaV7VLNpCsiLo'</span>
+               <span class="token punctuation">}</span>
 
-X <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">20</span><span class="token punctuation">,</span><span class="token number">15</span><span class="token punctuation">,</span><span class="token number">15</span><span class="token punctuation">,</span><span class="token operator">-</span><span class="token number">20</span><span class="token punctuation">]</span>
-Y <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">50</span><span class="token punctuation">,</span><span class="token number">50</span><span class="token punctuation">]</span>
-Z<span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0.59</span><span class="token punctuation">,</span><span class="token number">0.59</span><span class="token punctuation">,</span><span class="token number">0.59</span><span class="token punctuation">,</span><span class="token number">0.59</span><span class="token punctuation">]</span>
+    timeout <span class="token operator">=</span> random<span class="token punctuation">.</span>choice<span class="token punctuation">(</span>range<span class="token punctuation">(</span><span class="token number">180</span><span class="token punctuation">,</span> <span class="token number">210</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># prevent blocking IP</span>
+    Res <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span>url<span class="token punctuation">,</span> headers<span class="token operator">=</span>headers<span class="token punctuation">,</span> timeout<span class="token operator">=</span>timeout<span class="token punctuation">)</span><span class="token punctuation">.</span>content
+    soup <span class="token operator">=</span> BeautifulSoup<span class="token punctuation">(</span>Res<span class="token punctuation">,</span> <span class="token string">"lxml"</span><span class="token punctuation">)</span>
 
-verts <span class="token operator">=</span> <span class="token punctuation">[</span>list<span class="token punctuation">(</span>zip<span class="token punctuation">(</span>X<span class="token punctuation">,</span>Y<span class="token punctuation">,</span>Z<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
-
-x<span class="token punctuation">,</span> y <span class="token operator">=</span> map<span class="token punctuation">(</span>lons<span class="token punctuation">,</span> lats<span class="token punctuation">)</span></code></pre>
-<p>我们创建8个点，其中point1投影在X和Y轴所在平面上（即底面），point将point1向Z轴抬高0.6个单位，让其悬浮与Z=0.6的位置，并且在相应位置创建一个polygon,这样更具有立体感。</p>
-<h4 id="3-构造GIF函数"><a href="#3-构造GIF函数" class="headerlink" title="3.构造GIF函数"></a>3.构造GIF函数</h4><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">## for gif</span>
-<span class="token keyword">def</span> <span class="token function">update</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> fig<span class="token punctuation">,</span> ax<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    ax<span class="token punctuation">.</span>view_init<span class="token punctuation">(</span>elev<span class="token operator">=</span><span class="token number">20</span><span class="token punctuation">.</span><span class="token punctuation">,</span> azim<span class="token operator">=</span>i<span class="token punctuation">)</span>
-    <span class="token keyword">return</span> fig<span class="token punctuation">,</span> ax</code></pre>
-<p>其中参数<em>elev</em>表示沿着Z轴的高度，<em>azim</em>是<em>azimuth</em>的缩写，即为方位角</p>
-<h4 id="4-创建图层"><a href="#4-创建图层" class="headerlink" title="4.创建图层"></a>4.创建图层</h4><pre class=" language-python"><code class="language-python">map <span class="token operator">=</span> Basemap<span class="token punctuation">(</span>llcrnrlon<span class="token operator">=</span><span class="token operator">-</span><span class="token number">20</span><span class="token punctuation">,</span>llcrnrlat<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span>urcrnrlon<span class="token operator">=</span><span class="token number">15</span><span class="token punctuation">,</span>urcrnrlat<span class="token operator">=</span><span class="token number">50</span><span class="token punctuation">,</span>
-fix_aspect<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
-
-fig <span class="token operator">=</span> plt<span class="token punctuation">.</span>figure<span class="token punctuation">(</span><span class="token punctuation">)</span>
-ax <span class="token operator">=</span> Axes3D<span class="token punctuation">(</span>fig<span class="token punctuation">)</span>
-
-ax<span class="token punctuation">.</span>azim <span class="token operator">=</span> <span class="token number">270</span>
-ax<span class="token punctuation">.</span>dist <span class="token operator">=</span> <span class="token number">12</span>
-
-polys <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-<span class="token keyword">for</span> polygon <span class="token keyword">in</span> map<span class="token punctuation">.</span>landpolygons<span class="token punctuation">:</span>
-    polys<span class="token punctuation">.</span>append<span class="token punctuation">(</span>polygon<span class="token punctuation">.</span>get_coords<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    Papers_infor <span class="token operator">=</span> soup<span class="token punctuation">.</span>find_all<span class="token punctuation">(</span><span class="token string">'div'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token string">'class'</span><span class="token punctuation">:</span><span class="token string">'gs_ri'</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
 
 
-lc <span class="token operator">=</span> PolyCollection<span class="token punctuation">(</span>polys<span class="token punctuation">,</span> edgecolor<span class="token operator">=</span><span class="token string">'black'</span><span class="token punctuation">,</span>
-                    facecolor<span class="token operator">=</span><span class="token string">'#DDDDDD'</span><span class="token punctuation">,</span> closed<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> paper <span class="token keyword">in</span> Papers_infor<span class="token punctuation">:</span>
 
-ax<span class="token punctuation">.</span>add_collection3d<span class="token punctuation">(</span>lc<span class="token punctuation">)</span>
-ax<span class="token punctuation">.</span>add_collection3d<span class="token punctuation">(</span>map<span class="token punctuation">.</span>drawcoastlines<span class="token punctuation">(</span>linewidth<span class="token operator">=</span><span class="token number">0.25</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-ax<span class="token punctuation">.</span>add_collection3d<span class="token punctuation">(</span>map<span class="token punctuation">.</span>drawcountries<span class="token punctuation">(</span>linewidth<span class="token operator">=</span><span class="token number">0.35</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        title <span class="token operator">=</span> paper<span class="token punctuation">.</span>find<span class="token punctuation">(</span><span class="token string">'h3'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token string">'class'</span><span class="token punctuation">,</span><span class="token string">'gs_rt'</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true">#if title.a is not None:</span>
 
+        <span class="token comment" spellcheck="true">#else:</span>
+        <span class="token comment" spellcheck="true">#    TITLES.append("without title 404!!")</span>
 
-lon_step <span class="token operator">=</span> <span class="token number">10</span>
-lat_step <span class="token operator">=</span> <span class="token number">7</span>
-parallel_lon <span class="token operator">=</span> np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">15</span><span class="token punctuation">,</span> lat_step<span class="token punctuation">)</span>
-parallel_lat <span class="token operator">=</span> np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">50</span><span class="token punctuation">,</span>lon_step<span class="token punctuation">)</span>
+        cite <span class="token operator">=</span> paper<span class="token punctuation">.</span>find<span class="token punctuation">(</span><span class="token string">'div'</span><span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token string">'class'</span><span class="token punctuation">:</span><span class="token string">'gs_fl'</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+        cite1 <span class="token operator">=</span> cite<span class="token punctuation">.</span>get_text<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        cite2 <span class="token operator">=</span> re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span>r<span class="token string">"\d+\.?\d*"</span><span class="token punctuation">,</span>cite1<span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># Extracting cited amount</span>
 
-ax<span class="token punctuation">.</span>scatter3D<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> points<span class="token punctuation">,</span> color<span class="token operator">=</span> <span class="token string">'r'</span><span class="token punctuation">,</span> alpha<span class="token operator">=</span><span class="token number">0.8</span><span class="token punctuation">)</span>
-ax<span class="token punctuation">.</span>scatter3D<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> point1<span class="token punctuation">,</span>color<span class="token operator">=</span> <span class="token string">'b'</span><span class="token punctuation">,</span> alpha<span class="token operator">=</span><span class="token number">0.8</span><span class="token punctuation">)</span>
-ax<span class="token punctuation">.</span>add_collection3d<span class="token punctuation">(</span>Poly3DCollection<span class="token punctuation">(</span>verts<span class="token punctuation">,</span>facecolor <span class="token operator">=</span> <span class="token string">"gray"</span><span class="token punctuation">,</span>alpha <span class="token operator">=</span> <span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        author <span class="token operator">=</span> paper<span class="token punctuation">.</span>find<span class="token punctuation">(</span><span class="token string">'div'</span><span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token string">'class'</span><span class="token punctuation">:</span><span class="token string">'gs_a'</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+        author1 <span class="token operator">=</span> author<span class="token punctuation">.</span>get_text<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-<span class="token comment" spellcheck="true"># label</span>
-ax<span class="token punctuation">.</span>set_xlabel<span class="token punctuation">(</span><span class="token string">'Longitude (°E)'</span><span class="token punctuation">,</span> labelpad<span class="token operator">=</span><span class="token number">20</span><span class="token punctuation">)</span>
-ax<span class="token punctuation">.</span>set_ylabel<span class="token punctuation">(</span><span class="token string">'Latitude (°N)'</span><span class="token punctuation">,</span> labelpad<span class="token operator">=</span><span class="token number">20</span><span class="token punctuation">)</span>
-ax<span class="token punctuation">.</span>set_zlabel<span class="token punctuation">(</span><span class="token string">'blabla...'</span><span class="token punctuation">,</span> labelpad<span class="token operator">=</span><span class="token number">20</span><span class="token punctuation">)</span>
-ax<span class="token punctuation">.</span>set_yticks<span class="token punctuation">(</span>parallel_lat<span class="token punctuation">)</span>
-ax<span class="token punctuation">.</span>set_yticklabels<span class="token punctuation">(</span>parallel_lat<span class="token punctuation">)</span>
-ax<span class="token punctuation">.</span>set_xticks<span class="token punctuation">(</span>parallel_lon<span class="token punctuation">)</span>
-ax<span class="token punctuation">.</span>set_xticklabels<span class="token punctuation">(</span>parallel_lon<span class="token punctuation">)</span>
+        AUTHORS<span class="token punctuation">.</span>append<span class="token punctuation">(</span>author1<span class="token punctuation">)</span>
+        CITES<span class="token punctuation">.</span>append<span class="token punctuation">(</span>cite2<span class="token punctuation">)</span>
+        TITLES<span class="token punctuation">.</span>append<span class="token punctuation">(</span>title<span class="token punctuation">.</span>a<span class="token punctuation">.</span>get_text<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
 
-anim <span class="token operator">=</span> animation<span class="token punctuation">.</span>FuncAnimation<span class="token punctuation">(</span>fig<span class="token punctuation">,</span> update<span class="token punctuation">,</span> frames<span class="token operator">=</span>np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">360</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
-                                repeat<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> fargs<span class="token operator">=</span><span class="token punctuation">(</span>fig<span class="token punctuation">,</span> ax<span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">## layout gif</span>
-<span class="token comment" spellcheck="true">## anim.save('Projection.gif', dpi=80, fps=15,writer='imagemagick')</span>
-<span class="token comment" spellcheck="true">##</span>
-plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
-<p>最终得到的是如下的gif:<br><img src="/images/Projection.gif" alt=""></p>
+    time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># interval time was 3 seconds</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">"have finished {i+1} pages"</span><span class="token punctuation">)</span>
+
+
+
+<span class="token comment" spellcheck="true">##### output the csv file #####</span>
+PAPERS_INFOR <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span><span class="token punctuation">{</span>
+
+    <span class="token string">'title'</span><span class="token punctuation">:</span> TITLES<span class="token punctuation">,</span>
+    <span class="token string">'author'</span><span class="token punctuation">:</span> AUTHORS<span class="token punctuation">,</span>
+    <span class="token string">'cited_num'</span><span class="token punctuation">:</span> CITES
+
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+PAPERS_INFOR<span class="token punctuation">.</span>to_csv<span class="token punctuation">(</span><span class="token string">"Records.csv"</span><span class="token punctuation">,</span> index<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
+</code></pre>
+<h4 id="3-Conclusion"><a href="#3-Conclusion" class="headerlink" title="3.Conclusion"></a>3.Conclusion</h4><p>Please seting loop interval time more than 3 seconds, and it’s a safe way to continuely download your recosrd!</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -592,7 +581,7 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://liangchen3519.github.io/2020/02/25/Spatial-data-from-2D-to-3D/">https://liangchen3519.github.io/2020/02/25/Spatial-data-from-2D-to-3D/</a>
+                    <a href="https://liangchen3519.github.io/2020/04/05/Extracting-records-from-google-scholar/">https://liangchen3519.github.io/2020/04/05/Extracting-records-from-google-scholar/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -630,16 +619,16 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Basemap/">
-                                    <span class="chip bg-color">Basemap</span>
+                                <a href="/tags/Google-scholar/">
+                                    <span class="chip bg-color">Google scholar</span>
                                 </a>
                             
-                                <a href="/tags/Matplotlib/">
-                                    <span class="chip bg-color">Matplotlib</span>
+                                <a href="/tags/Web-Crawler/">
+                                    <span class="chip bg-color">Web Crawler</span>
                                 </a>
                             
-                                <a href="/tags/gif/">
-                                    <span class="chip bg-color">gif</span>
+                                <a href="/tags/Beautifulsoup/">
+                                    <span class="chip bg-color">Beautifulsoup</span>
                                 </a>
                             
                         </div>
@@ -810,7 +799,7 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
         repo: 'LiangChen3519.github.io',
         owner: 'LiangChen3519',
         admin: ["LiangChen3519"],
-        id: '2020-02-25T10-33-04',
+        id: '2020-04-05T10-59-07',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -831,9 +820,68 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2020/04/05/Extracting-records-from-google-scholar/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="Extracting records from Google scholar">
+                        
+                        <span class="card-title">Extracting records from Google scholar</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Usually, we like to search academic paper using Google Scholar, but sometimes, it’s an annoying thing that if we want to
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-05
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Python/" class="post-category">
+                                    Python,
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Google-scholar/">
+                        <span class="chip bg-color">Google scholar</span>
+                    </a>
+                    
+                    <a href="/tags/Web-Crawler/">
+                        <span class="chip bg-color">Web Crawler</span>
+                    </a>
+                    
+                    <a href="/tags/Beautifulsoup/">
+                        <span class="chip bg-color">Beautifulsoup</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2020/02/26/Forest-Ecosystem-Modeling/">
                     <div class="card-image">
@@ -851,9 +899,9 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-26
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-26
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -879,64 +927,6 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
                     
                     <a href="/tags/Carbon-flux/">
                         <span class="chip bg-color">Carbon flux</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/02/25/HEXO-%E6%96%B0%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%84%9F%E6%83%B3/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="HEXO 新建博客感想">
-                        
-                        <span class="card-title">HEXO 新建博客感想</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            1.什么是HEXOHEXO 是一个利用Markdown渲染的，快速布局博客的框架,在几秒内，即可利用靓丽的主题生成静态网页[1]。具体更多的细节请查看官网的doc。
-2.配套其他软件我们首先需要安装Node.js,再在Node.js中利用n
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-25
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Markdown/" class="post-category">
-                                    Markdown
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/HEXO/">
-                        <span class="chip bg-color">HEXO</span>
-                    </a>
-                    
-                    <a href="/tags/Matery/">
-                        <span class="chip bg-color">Matery</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%8D%9A%E5%AE%A2/">
-                        <span class="chip bg-color">博客</span>
                     </a>
                     
                 </div>
