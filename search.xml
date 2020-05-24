@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>math symbols in R</title>
+      <link href="/2020/05/24/math-symnols-and-figure-patchworks/"/>
+      <url>/2020/05/24/math-symnols-and-figure-patchworks/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h3 id="1-Annotations-with-math-symbols-in-R"><a href="#1-Annotations-with-math-symbols-in-R" class="headerlink" title="1.Annotations with math symbols in R"></a>1.Annotations with math symbols in R</h3><h4 id="1-1-At-x-y-axis"><a href="#1-1-At-x-y-axis" class="headerlink" title="1.1 At x\y axis"></a>1.1 At x\y axis</h4><p>It is always a challenging for adding math symbols at x or y axis elegantly in <a href="https://www.r-project.org/" target="_blank" rel="noopener">R</a><sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="https://www.r-project.org/">[1]</span></a></sup>. Because the grammar of those math symbols in R is quite odd when it comes to a comparison with <strong>LATEX</strong>. But, anyway, we still have a solution. For me, i highly recommend using <code>expression(paste())</code> combined function to achieve goals.For example:<br>when you write script as:<br><code>expression(paste('gC ',%.%m^-2%.%s^-1))</code>, you will get a unit expression like<br>$gC \cdot m^{-2}\cdot s^{-1}$, looks cool! right?<br>More useful information about math annotations, please check <a href="https://astrostatistics.psu.edu/su07/R/html/grDevices/html/plotmath.html" target="_blank" rel="noopener">here</a><sup id="fnref:2"><a href="#fn:2" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="https://astrostatistics.psu.edu/su07/R/html/grDevices/html/plotmath.html">[2]</span></a></sup>.</p><h4 id="1-2-At-ggplot2"><a href="#1-2-At-ggplot2" class="headerlink" title="1.2 At ggplot2"></a>1.2 At ggplot2</h4><p>As we all know that <strong>ggplot2</strong> is a super powerful tool for visualizing your dataset. Our question is how to add basic linear model to <em>ggplot</em> object figure automatically. Here i used <em>mtcars</em> dataset as an example:</p><pre class=" language-R"><code class="language-R">ggplot(mtcars,aes(mpg,disp,col = factor(cyl)))+geom_point()+    geom_smooth(aes(fill = factor(cyl)),method = 'lm',alpha = 0.2)+    theme(axis.title = element_text(colour = 'black',size = 12),         axis.text = element_text(colour = 'black',size = 12))</code></pre><p><img src="/images/mpg_vs_disp.png" alt="mpg against disp"></p><p>And now we want to add math annotations, so first we define a function to extract linear model information like $R^{2}$ and model equation:</p><pre class=" language-R"><code class="language-R">lm_labels <- function(dat,y,x) {     mod <- lm(y ~ x, data=dat)     formula <- sprintf("italic(y) == %.2f %+.2f * italic(x)",     round(coef(mod)[1], 2), round(coef(mod)[2], 2))     r2 <- sprintf("italic(R^2) == %.3f", summary(mod)$r.squared)     data.frame(formula=formula, r2=r2, stringsAsFactors=FALSE)}</code></pre><p>then using <code>plyr::ddply(dat, "category", lm_labels)</code> to get a new dataframe as below:</p><p><img src="/images/lm_infor.png" alt="linear model information"></p><p>next, just add </p><pre class=" language-R"><code class="language-R">geom_text(data = labels,aes(x=x_pos,y=y_pos,label=formula), parse=TRUE,          hjust=0,size = 4, show.legend  = F)+geom_text(data = labels,aes(x=x_pos,y=y_pos-20,label=r2), parse=TRUE,           hjust=0,size = 4, show.legend  = F)</code></pre><p>to the previous codes, you will get</p><p><img src="/images/with_annotations.png" alt="with math annotations"></p><p>Okay, all have been done! Next blog i will give an introduction about figure patchwork in R.</p><div id="footnotes"><hr><div id="footnotelist"><ol style="list-style: none; padding-left: 0; margin-left: 40px"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">1.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">https://www.r-project.org/<a href="#fnref:1" rev="footnote"> ↩</a></span></li><li id="fn:2"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">2.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">https://astrostatistics.psu.edu/su07/R/html/grDevices/html/plotmath.html<a href="#fnref:2" rev="footnote"> ↩</a></span></li></ol></div></div><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> R </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> patchwork </tag>
+            
+            <tag> ggplot2 </tag>
+            
+            <tag> data visualization </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Extracting records from Google Scholar</title>
       <link href="/2020/04/05/Extracting-records-from-google-scholar/"/>
       <url>/2020/04/05/Extracting-records-from-google-scholar/</url>

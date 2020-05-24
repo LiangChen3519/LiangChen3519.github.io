@@ -4,9 +4,8 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="HEXO 新建博客感想, Liang Chen&#39;s Blog">
-    <meta name="description" content="1.什么是HEXOHEXO 是一个利用Markdown渲染的，快速布局博客的框架,在几秒内，即可利用靓丽的主题生成静态网页[1]。具体更多的细节请查看官网的doc。
-2.配套其他软件我们首先需要安装Node.js,再在Node.js中利用n">
+    <meta name="keywords" content="math symbols in R, Liang Chen&#39;s Blog">
+    <meta name="description" content="1.Annotations with math symbols in R1.1 At x\y axisIt is always a challenging for adding math symbols at x or y axis ele">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>HEXO 新建博客感想 | Liang Chen&#39;s Blog</title>
+    <title>math symbols in R | Liang Chen&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -283,12 +282,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">HEXO 新建博客感想</h1>
+                    <h1 class="description center-align post-title">math symbols in R</h1>
                 </div>
             </div>
         </div>
@@ -405,16 +404,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/HEXO/">
-                                <span class="chip bg-color">HEXO</span>
+                            <a href="/tags/patchwork/">
+                                <span class="chip bg-color">patchwork</span>
                             </a>
                         
-                            <a href="/tags/Matery/">
-                                <span class="chip bg-color">Matery</span>
+                            <a href="/tags/ggplot2/">
+                                <span class="chip bg-color">ggplot2</span>
                             </a>
                         
-                            <a href="/tags/%E5%8D%9A%E5%AE%A2/">
-                                <span class="chip bg-color">博客</span>
+                            <a href="/tags/data-visualization/">
+                                <span class="chip bg-color">data visualization</span>
                             </a>
                         
                     </div>
@@ -425,8 +424,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Markdown/" class="post-category">
-                                Markdown
+                            <a href="/categories/R/" class="post-category">
+                                R
                             </a>
                         
                     </div>
@@ -438,7 +437,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-02-25
+                    2020-05-24
                 </div>
                 
 
@@ -447,7 +446,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    498
+                    210
                 </div>
                 
 
@@ -470,19 +469,33 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h3 id="1-什么是HEXO"><a href="#1-什么是HEXO" class="headerlink" title="1.什么是HEXO"></a>1.什么是HEXO</h3><p><strong>HEXO</strong> 是一个利用Markdown渲染的，快速布局博客的框架,在几秒内，即可利用靓丽的主题生成静态网页<sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="https://www.zhihu.com/question/51588481
-">[1]</span></a></sup>。具体更多的细节请查看<a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">官网的doc</a>。</p>
-<h3 id="2-配套其他软件"><a href="#2-配套其他软件" class="headerlink" title="2.配套其他软件"></a>2.配套其他软件</h3><p>我们首先需要安装<a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">Node.js</a>,再在<strong>Node.js</strong>中利用npm利用<code>$ npm install -g hexo-cli</code>安装blog模块，此时在根目录下会有(比较重要的两个)：</p>
-<ul>
-<li>一个’_config.yml’的属性文件，该文件是定义静态网页的各种属性配置，比如网页的title、subtitle、托管的仓库等等。</li>
-<li>一个theme文件夹，该文件顾名思义主要是存放网页主题的配置文件，比如种链接、背景颜色、各种icon的设置等等。</li>
-</ul>
-<p>然后，我们需要在<a href="https://github.com/" target="_blank" rel="noopener">Github</a>上面注册，然后创建仓库用来托管我们的blog，如何设置仓库及其Key可以参考知乎<sup id="fnref:2"><a href="#fn:2" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="https://zhuanlan.zhihu.com/p/26625249
-">[2]</span></a></sup></p>
-<p>最后我们需要一个网页的模板，并且基于该模板进行魔改，最终得到属于自己的blog。模板的选择，可以参考HEXO的官网<sup id="fnref:3"><a href="#fn:3" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="https://hexo.io/themes/
-">[3]</span></a></sup>。一些logo的选择可以到<a href="https://fontawesome.com/" target="_blank" rel="noopener">fontawesome</a>上面下载，然后本地利用一些软件处理得到自己的logo.</p>
-<h3 id="3-为什么搭建自己博客"><a href="#3-为什么搭建自己博客" class="headerlink" title="3.为什么搭建自己博客"></a>3.为什么搭建自己博客</h3><p>当下有很多可以写文章的网站，比如豆瓣、知乎、简书等, 但是假如有利益冲突，被人家举报，就算你花了很多时间来写东西，你写的东西依然可能被屏蔽。所以基于此最安心的方法是搭建一个自己的博客，自由自在。并且HEXO是用Markdown渲染的，意味着，写作如丝般顺滑。</p>
-<div id="footnotes"><hr><div id="footnotelist"><ol style="list-style: none; padding-left: 0; margin-left: 40px"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">1.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">https://www.zhihu.com/question/51588481<a href="#fnref:1" rev="footnote"> ↩</a></span></li><li id="fn:2"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">2.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">https://zhuanlan.zhihu.com/p/26625249<a href="#fnref:2" rev="footnote"> ↩</a></span></li><li id="fn:3"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">3.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">https://hexo.io/themes/<a href="#fnref:3" rev="footnote"> ↩</a></span></li></ol></div></div><script>
+                <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h3 id="1-Annotations-with-math-symbols-in-R"><a href="#1-Annotations-with-math-symbols-in-R" class="headerlink" title="1.Annotations with math symbols in R"></a>1.Annotations with math symbols in R</h3><h4 id="1-1-At-x-y-axis"><a href="#1-1-At-x-y-axis" class="headerlink" title="1.1 At x\y axis"></a>1.1 At x\y axis</h4><p>It is always a challenging for adding math symbols at x or y axis elegantly in <a href="https://www.r-project.org/" target="_blank" rel="noopener">R</a><sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="https://www.r-project.org/
+">[1]</span></a></sup>. Because the grammar of those math symbols in R is quite odd when it comes to a comparison with <strong>LATEX</strong>. But, anyway, we still have a solution. For me, i highly recommend using <code>expression(paste())</code> combined function to achieve goals.For example:<br>when you write script as:<br><code>expression(paste('gC ',%.%m^-2%.%s^-1))</code>, you will get a unit expression like<br>$gC \cdot m^{-2}\cdot s^{-1}$, looks cool! right?<br>More useful information about math annotations, please check <a href="https://astrostatistics.psu.edu/su07/R/html/grDevices/html/plotmath.html" target="_blank" rel="noopener">here</a><sup id="fnref:2"><a href="#fn:2" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="https://astrostatistics.psu.edu/su07/R/html/grDevices/html/plotmath.html">[2]</span></a></sup>.</p>
+<h4 id="1-2-At-ggplot2"><a href="#1-2-At-ggplot2" class="headerlink" title="1.2 At ggplot2"></a>1.2 At ggplot2</h4><p>As we all know that <strong>ggplot2</strong> is a super powerful tool for visualizing your dataset. Our question is how to add basic linear model to <em>ggplot</em> object figure automatically. Here i used <em>mtcars</em> dataset as an example:</p>
+<pre class=" language-R"><code class="language-R">ggplot(mtcars,aes(mpg,disp,col = factor(cyl)))+geom_point()+
+    geom_smooth(aes(fill = factor(cyl)),method = 'lm',alpha = 0.2)+
+    theme(axis.title = element_text(colour = 'black',size = 12),
+         axis.text = element_text(colour = 'black',size = 12))</code></pre>
+<p><img src="/images/mpg_vs_disp.png" alt="mpg against disp"></p>
+<p>And now we want to add math annotations, so first we define a function to extract linear model information like $R^{2}$ and model equation:</p>
+<pre class=" language-R"><code class="language-R">lm_labels <- function(dat,y,x) {
+     mod <- lm(y ~ x, data=dat)
+     formula <- sprintf("italic(y) == %.2f %+.2f * italic(x)",
+     round(coef(mod)[1], 2), round(coef(mod)[2], 2))
+     r2 <- sprintf("italic(R^2) == %.3f", summary(mod)$r.squared)
+     data.frame(formula=formula, r2=r2, stringsAsFactors=FALSE)
+}</code></pre>
+<p>then using <code>plyr::ddply(dat, "category", lm_labels)</code> to get a new dataframe as below:</p>
+<p><img src="/images/lm_infor.png" alt="linear model information"></p>
+<p>next, just add </p>
+<pre class=" language-R"><code class="language-R">geom_text(data = labels,aes(x=x_pos,y=y_pos,label=formula), parse=TRUE,
+          hjust=0,size = 4, show.legend  = F)+
+geom_text(data = labels,aes(x=x_pos,y=y_pos-20,label=r2), parse=TRUE, 
+          hjust=0,size = 4, show.legend  = F)</code></pre>
+<p>to the previous codes, you will get</p>
+<p><img src="/images/with_annotations.png" alt="with math annotations"></p>
+<p>Okay, all have been done! Next blog i will give an introduction about figure patchwork in R.</p>
+<div id="footnotes"><hr><div id="footnotelist"><ol style="list-style: none; padding-left: 0; margin-left: 40px"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">1.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">https://www.r-project.org/<a href="#fnref:1" rev="footnote"> ↩</a></span></li><li id="fn:2"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">2.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">https://astrostatistics.psu.edu/su07/R/html/grDevices/html/plotmath.html<a href="#fnref:2" rev="footnote"> ↩</a></span></li></ol></div></div><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -525,7 +538,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://liangchen3519.github.io/2020/02/25/HEXO-%E6%96%B0%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%84%9F%E6%83%B3/">https://liangchen3519.github.io/2020/02/25/HEXO-%E6%96%B0%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%84%9F%E6%83%B3/</a>
+                    <a href="https://liangchen3519.github.io/2020/05/24/math-symnols-and-figure-patchworks/">https://liangchen3519.github.io/2020/05/24/math-symnols-and-figure-patchworks/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -563,16 +576,16 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/HEXO/">
-                                    <span class="chip bg-color">HEXO</span>
+                                <a href="/tags/patchwork/">
+                                    <span class="chip bg-color">patchwork</span>
                                 </a>
                             
-                                <a href="/tags/Matery/">
-                                    <span class="chip bg-color">Matery</span>
+                                <a href="/tags/ggplot2/">
+                                    <span class="chip bg-color">ggplot2</span>
                                 </a>
                             
-                                <a href="/tags/%E5%8D%9A%E5%AE%A2/">
-                                    <span class="chip bg-color">博客</span>
+                                <a href="/tags/data-visualization/">
+                                    <span class="chip bg-color">data visualization</span>
                                 </a>
                             
                         </div>
@@ -743,7 +756,7 @@
         repo: 'LiangChen3519.github.io',
         owner: 'LiangChen3519',
         admin: ["LiangChen3519"],
-        id: '2020-02-25T00-15-26',
+        id: '2020-05-24T17-08-44',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -764,29 +777,88 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/02/25/Spatial-data-from-2D-to-3D/">
+                <a href="/2020/05/24/math-symnols-and-figure-patchworks/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="Spatial data from 2D to 3D">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="math symbols in R">
                         
-                        <span class="card-title">Spatial data from 2D to 3D</span>
+                        <span class="card-title">math symbols in R</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            一般来说，我们展示空间数据，如果不是点云数据的话，大多数为二维的。比如说X轴为longitude，Y轴为latitude，那我们是否可以也利用Z轴，在添加一个属性使其，投影到3D中去呢？比如说Z轴为高程，再比如说对于多时间序列的是空间数据，
+                            1.Annotations with math symbols in R1.1 At x\y axisIt is always a challenging for adding math symbols at x or y axis ele
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-25
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-24
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/R/" class="post-category">
+                                    R
+                                </a>
+                            
+                            
                         </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/patchwork/">
+                        <span class="chip bg-color">patchwork</span>
+                    </a>
+                    
+                    <a href="/tags/ggplot2/">
+                        <span class="chip bg-color">ggplot2</span>
+                    </a>
+                    
+                    <a href="/tags/data-visualization/">
+                        <span class="chip bg-color">data visualization</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/04/05/Extracting-records-from-google-scholar/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Extracting records from Google Scholar">
+                        
+                        <span class="card-title">Extracting records from Google Scholar</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Usually, we like to search academic paper using Google Scholar, but sometimes, it’s an annoying thing that if we want to
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-05
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -802,75 +874,16 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Basemap/">
-                        <span class="chip bg-color">Basemap</span>
+                    <a href="/tags/Google-Scholar/">
+                        <span class="chip bg-color">Google Scholar</span>
                     </a>
                     
-                    <a href="/tags/Matplotlib/">
-                        <span class="chip bg-color">Matplotlib</span>
+                    <a href="/tags/Web-Crawler/">
+                        <span class="chip bg-color">Web Crawler</span>
                     </a>
                     
-                    <a href="/tags/gif/">
-                        <span class="chip bg-color">gif</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/02/25/HEXO-%E6%96%B0%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%84%9F%E6%83%B3/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="HEXO 新建博客感想">
-                        
-                        <span class="card-title">HEXO 新建博客感想</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            1.什么是HEXOHEXO 是一个利用Markdown渲染的，快速布局博客的框架,在几秒内，即可利用靓丽的主题生成静态网页[1]。具体更多的细节请查看官网的doc。
-2.配套其他软件我们首先需要安装Node.js,再在Node.js中利用n
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-25
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Markdown/" class="post-category">
-                                    Markdown
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/HEXO/">
-                        <span class="chip bg-color">HEXO</span>
-                    </a>
-                    
-                    <a href="/tags/Matery/">
-                        <span class="chip bg-color">Matery</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%8D%9A%E5%AE%A2/">
-                        <span class="chip bg-color">博客</span>
+                    <a href="/tags/Beautifulsoup/">
+                        <span class="chip bg-color">Beautifulsoup</span>
                     </a>
                     
                 </div>
