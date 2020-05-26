@@ -474,7 +474,9 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h3 id="1-Annotations-with-math-symbols-in-R"><a href="#1-Annotations-with-math-symbols-in-R" class="headerlink" title="1.Annotations with math symbols in R"></a>1.Annotations with math symbols in R</h3><h4 id="1-1-At-x-y-axis"><a href="#1-1-At-x-y-axis" class="headerlink" title="1.1 At x\y axis"></a>1.1 At x\y axis</h4><p>It is always a challenging task for adding math symbols at x or y axis elegantly in <a href="https://www.r-project.org/" target="_blank" rel="noopener">R</a><sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="https://www.r-project.org/
-">[1]</span></a></sup>. Because the grammar of those math symbols in R is quite odd when it comes to a comparison with <strong>LATEX</strong>. But, anyway, we still have a solution. For me, i highly recommend using <code>expression(paste())</code> combined function to achieve goals.For example:<br>when you write script as:<br><code>expression(paste('gC ',%.%m^-2%.%s^-1))</code>, you will get a unit expression like<br>$gC \cdot m^{-2}\cdot s^{-1}$, looks cool! right?<br>More useful information about math annotations, please check <a href="https://astrostatistics.psu.edu/su07/R/html/grDevices/html/plotmath.html" target="_blank" rel="noopener">here</a><sup id="fnref:2"><a href="#fn:2" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="https://astrostatistics.psu.edu/su07/R/html/grDevices/html/plotmath.html">[2]</span></a></sup>.</p>
+">[1]</span></a></sup>. Because the grammar of those math symbols in R is quite odd when it comes to a comparison with <strong>LATEX</strong>. But, anyway, we still have a solution. For me, i highly recommend using <code>expression(paste())</code> combined function to achieve goals.For example:<br>when you write script as:<br><code>expression(paste('gC ',%.%m^-2%.%s^-1))</code>, you will get a unit expression like:</p>
+<p>$$gC \cdot m^{-2}\cdot s^{-1}$$</p>
+<p>looks cool! right?<br>More useful information about math annotations, please check <a href="https://astrostatistics.psu.edu/su07/R/html/grDevices/html/plotmath.html" target="_blank" rel="noopener">here</a><sup id="fnref:2"><a href="#fn:2" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="https://astrostatistics.psu.edu/su07/R/html/grDevices/html/plotmath.html">[2]</span></a></sup>.</p>
 <h4 id="1-2-At-ggplot2"><a href="#1-2-At-ggplot2" class="headerlink" title="1.2 At ggplot2"></a>1.2 At ggplot2</h4><p>As we all know that <strong>ggplot2</strong> is a super powerful tool for visualizing your dataset. Our question is how to add basic linear model to <em>ggplot</em> object figure automatically. Here i used <em>mtcars</em> dataset as an example:</p>
 <pre class=" language-R"><code class="language-R">ggplot(mtcars,aes(mpg,disp,col = factor(cyl)))+geom_point()+
     geom_smooth(aes(fill = factor(cyl)),method = 'lm',alpha = 0.2)+
@@ -1028,6 +1030,13 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
 </main>
 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
 
 
 
